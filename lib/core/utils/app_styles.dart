@@ -3,21 +3,9 @@ import 'package:flutter/material.dart';
 import 'size_config.dart';
 
 abstract class AppStyles {
-  static TextStyle styleMedium14(context) => TextStyle(
-        fontSize: getResponsiveFontSize(context, fontSize: 14),
-        fontWeight: FontWeight.w400,
-        color: const Color(0xff363942),
-      );
-
-  static TextStyle styleMedium16(context) => TextStyle(
-        fontSize: getResponsiveFontSize(context, fontSize: 16),
-        fontWeight: FontWeight.w400,
-        color: const Color(0xff363942),
-      );
-
-  static TextStyle styleRegular12(context) => TextStyle(
-        fontSize: getResponsiveFontSize(context, fontSize: 12),
-        fontWeight: FontWeight.w400,
+  static TextStyle styleBold35(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 35),
+        fontWeight: FontWeight.w700,
         color: const Color(0xff363942),
       );
 }
