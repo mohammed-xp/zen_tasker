@@ -1,3 +1,17 @@
 {
-    
+    "zen": "Zen",
+    "tasker": "Tasker",
+    "onBoardingSubTitle1": "Start organizing your day and managing your tasks with ease. Never miss a task again!",
+    "welcomeTo": "Welcome to",
+    "onBoardingSubTitle2": "Whether it is daily or weekly tasks, you can easily add tasks and set deadlines",
+    "onBoardingTitle2": "Add your tasks easily",
+    "skip": "Skip",
+    "startNow": "Start Now",
+    "next": "Next",
+    "onBoardingTitle3": "Smart Reminders",
+    "onBoardingSubTitle3": "Get notifications to remind you of important tasks at the right time, and you will never miss a task",
+    "onBoardingTitle4": "Complete your tasks and see your progress",
+    "onBoardingSubTitle4": "Mark completed tasks and track your achievements day by day",
+    "onBoardingTitle5": "Ready to get started?",
+    "onBoardingSubTitle5": "Start organizing your life today and get more done easily!"
 }

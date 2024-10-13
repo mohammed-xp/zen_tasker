@@ -21,5 +21,30 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
+            "Start organizing your day and managing your tasks with ease. Never miss a task again!"),
+        "onBoardingSubTitle2": MessageLookupByLibrary.simpleMessage(
+            "Whether it is daily or weekly tasks, you can easily add tasks and set deadlines"),
+        "onBoardingSubTitle3": MessageLookupByLibrary.simpleMessage(
+            "Get notifications to remind you of important tasks at the right time, and you will never miss a task"),
+        "onBoardingSubTitle4": MessageLookupByLibrary.simpleMessage(
+            "Mark completed tasks and track your achievements day by day"),
+        "onBoardingSubTitle5": MessageLookupByLibrary.simpleMessage(
+            "Start organizing your life today and get more done easily!"),
+        "onBoardingTitle2":
+            MessageLookupByLibrary.simpleMessage("Add your tasks easily"),
+        "onBoardingTitle3":
+            MessageLookupByLibrary.simpleMessage("Smart Reminders"),
+        "onBoardingTitle4": MessageLookupByLibrary.simpleMessage(
+            "Complete your tasks and see your progress"),
+        "onBoardingTitle5":
+            MessageLookupByLibrary.simpleMessage("Ready to get started?"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+        "tasker": MessageLookupByLibrary.simpleMessage("Tasker"),
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
+        "zen": MessageLookupByLibrary.simpleMessage("Zen")
+      };
 }

@@ -1,12 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/utils/app_colors.dart';
 
 import 'size_config.dart';
 
 abstract class AppStyles {
+  static TextStyle styleThick24(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 24),
+        fontWeight: FontWeight.w900,
+        color: const Color(0xff363942),
+      );
+
+  static TextStyle styleThick15(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 15),
+        fontWeight: FontWeight.w900,
+        color: AppColors.primaryColor,
+      );
+
   static TextStyle styleBold35(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 35),
         fontWeight: FontWeight.w700,
         color: const Color(0xff363942),
+      );
+
+  static TextStyle styleBold23(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 23),
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      );
+
+  static TextStyle styleBold16(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      );
+
+  static TextStyle styleSemiBold13(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        fontWeight: FontWeight.w600,
+        color: Colors.black,
+      );
+
+  static TextStyle styleRegular18(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 18),
+        fontWeight: FontWeight.w400,
+        color: Colors.black,
+      );
+
+  static TextStyle styleRegular13(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        fontWeight: FontWeight.w400,
+        color: Colors.grey,
       );
 }
 

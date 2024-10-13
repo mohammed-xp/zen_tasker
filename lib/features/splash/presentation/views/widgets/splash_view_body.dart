@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zen_tasker/core/utils/app_images.dart';
-import 'package:zen_tasker/core/utils/app_styles.dart';
-
-import '../../../../../core/utils/app_colors.dart';
+import 'package:zen_tasker/core/widgets/custom_title_text.dart';
 
 class SplashViewBody extends StatelessWidget {
   const SplashViewBody({super.key});
@@ -21,22 +19,8 @@ class SplashViewBody extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        Text.rich(
-          TextSpan(
-            text: 'Zen',
-            style: AppStyles.styleBold35(context).copyWith(
-              color: AppColors.secendaryColor,
-            ),
-            children: [
-              TextSpan(
-                text: 'Tasker',
-                style: AppStyles.styleBold35(context).copyWith(
-                  color: AppColors.primaryColor,
-                ),
-              ),
-            ],
-          ),
-          textAlign: TextAlign.center,
+        const CustomTitleText(
+          fontSize: 35,
         ),
       ],
     );

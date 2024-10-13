@@ -21,5 +21,29 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
+            "ابدأ بتنظيم يومك وإدارة مهامك بسهولة. لن تضيع أي مهمة بعد الآن!"),
+        "onBoardingSubTitle2": MessageLookupByLibrary.simpleMessage(
+            "سواء كانت مهاماً يومية أو أسبوعية، يمكنك إضافة المهام بسهولة وتحديد المواعيد النهائية"),
+        "onBoardingSubTitle3": MessageLookupByLibrary.simpleMessage(
+            "احصل على إشعارات لتذكيرك بالمهام الهامة في الوقت المناسب، ولن تفوت أي مهمة"),
+        "onBoardingSubTitle4": MessageLookupByLibrary.simpleMessage(
+            "قم بتحديد المهام المكتملة وتابع إنجازاتك يومًا بعد يوم"),
+        "onBoardingSubTitle5": MessageLookupByLibrary.simpleMessage(
+            "ابدأ اليوم بتنظيم حياتك وإنجاز المزيد بسهولة!"),
+        "onBoardingTitle2":
+            MessageLookupByLibrary.simpleMessage("أضف مهامك بكل سهولة"),
+        "onBoardingTitle3":
+            MessageLookupByLibrary.simpleMessage("التذكيرات الذكية"),
+        "onBoardingTitle4":
+            MessageLookupByLibrary.simpleMessage("أكمل مهامك وشاهد تقدمك"),
+        "onBoardingTitle5": MessageLookupByLibrary.simpleMessage("جاهز للبدء؟"),
+        "skip": MessageLookupByLibrary.simpleMessage("تخط"),
+        "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "tasker": MessageLookupByLibrary.simpleMessage("تاسكر"),
+        "welcomeTo": MessageLookupByLibrary.simpleMessage("مرحباً بك في"),
+        "zen": MessageLookupByLibrary.simpleMessage("زين ")
+      };
 }
