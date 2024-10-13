@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
-import 'package:zen_tasker/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
