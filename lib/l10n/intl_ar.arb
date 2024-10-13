@@ -13,5 +13,8 @@
     "onBoardingTitle4": "أكمل مهامك وشاهد تقدمك",
     "onBoardingSubTitle4": "قم بتحديد المهام المكتملة وتابع إنجازاتك يومًا بعد يوم",
     "onBoardingTitle5": "جاهز للبدء؟",
-    "onBoardingSubTitle5": "ابدأ اليوم بتنظيم حياتك وإنجاز المزيد بسهولة!"
+    "onBoardingSubTitle5": "ابدأ اليوم بتنظيم حياتك وإنجاز المزيد بسهولة!",
+    "goodMorning": "صباح الخير",
+    "goodEvening": "مساء الخير",
+    "findYourTask": "ابحث عن مهمتك"
 }

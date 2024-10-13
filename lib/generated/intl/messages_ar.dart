@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "findYourTask": MessageLookupByLibrary.simpleMessage("ابحث عن مهمتك"),
+        "goodEvening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
+        "goodMorning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
             "ابدأ بتنظيم يومك وإدارة مهامك بسهولة. لن تضيع أي مهمة بعد الآن!"),

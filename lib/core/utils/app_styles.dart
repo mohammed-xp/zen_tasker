@@ -34,9 +34,21 @@ abstract class AppStyles {
         color: Colors.black,
       );
 
+  static TextStyle styleBold13(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 13),
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      );
+
   static TextStyle styleSemiBold13(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 13),
         fontWeight: FontWeight.w600,
+        color: Colors.black,
+      );
+
+  static TextStyle styleMedium16(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 16),
+        fontWeight: FontWeight.w500,
         color: Colors.black,
       );
 

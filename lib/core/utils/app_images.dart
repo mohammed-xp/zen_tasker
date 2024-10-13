@@ -2,6 +2,10 @@
 class AppImages {
   AppImages._();
   
+  /// Assets for imagesCheckIcon
+  /// assets/images/check_icon.svg
+  static const String imagesCheckIcon = "assets/images/check_icon.svg";
+
   /// Assets for imagesLogoApp
   /// assets/images/logo_app.png
   static const String imagesLogoApp = "assets/images/logo_app.png";
@@ -25,5 +29,9 @@ class AppImages {
   /// Assets for imagesOnboardingImage5
   /// assets/images/onboarding_image_5.svg
   static const String imagesOnboardingImage5 = "assets/images/onboarding_image_5.svg";
+
+  /// Assets for imagesSearchIcon
+  /// assets/images/search_icon.svg
+  static const String imagesSearchIcon = "assets/images/search_icon.svg";
 }
 
