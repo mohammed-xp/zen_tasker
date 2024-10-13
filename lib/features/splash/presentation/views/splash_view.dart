@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/constants.dart';
+import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
+import 'package:zen_tasker/features/home/presentation/views/home_view.dart';
 import 'package:zen_tasker/features/onboarding/presentation/views/onboarding_view.dart';
 
 import 'widgets/splash_view_body.dart';
@@ -52,19 +55,17 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 
-  /// Navigates to the [OnboardingView] after a 3-second delay.
-  ///
-  /// This is called in [initState] and is used to automatically navigate from
-  /// the [SplashView] to the [OnboardingView] after a short delay.
+  /// Navigates to either the [HomeView] or the [OnboardingView] after a delay of
+  /// 5 seconds. If [kIsOnBoardingViewSeen] is true, it navigates to the
+  /// [HomeView], otherwise it navigates to the [OnboardingView].
   void excuteNavigation() {
-    // bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
+    bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
     Future.delayed(const Duration(seconds: 5), () {
-      // if (isOnBoardingViewSeen) {
-      //   Navigator.pushReplacementNamed(context, SigninView.routeName);
-      // } else {
-      //   Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
-      // }
-      Navigator.pushReplacementNamed(context, OnboardingView.routeName);
+      if (isOnBoardingViewSeen) {
+        Navigator.pushReplacementNamed(context, HomeView.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, OnboardingView.routeName);
+      }
     });
   }
 }

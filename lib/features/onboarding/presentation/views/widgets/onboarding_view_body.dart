@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/models/onboarding_model.dart';
+import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
@@ -134,6 +136,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   }
 
   void start() {
+    Prefs.setBool(kIsOnBoardingViewSeen, true);
     Navigator.pushReplacementNamed(context, HomeView.routeName);
   }
 }
