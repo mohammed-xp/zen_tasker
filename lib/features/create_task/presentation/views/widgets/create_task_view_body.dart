@@ -128,7 +128,14 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                   ),
                   const Spacer(),
                   CustomButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                      } else {
+                        autovalidateMode = AutovalidateMode.always;
+                        setState(() {});
+                      }
+                    },
                     text: S.of(context).addTask,
                   ),
                   const SizedBox(
