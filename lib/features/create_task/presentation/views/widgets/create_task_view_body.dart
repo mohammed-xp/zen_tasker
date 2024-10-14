@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zen_tasker/constants.dart';
+import 'package:zen_tasker/core/helper_function/convert_time_of_day_to_date_time.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
@@ -94,16 +95,19 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                         child: LableDateAndTimeTextField(
                           title: S.of(context).time,
                           hintText: formatTime(
-                              time: TimeOfDay.fromDateTime(DateTime.now())),
+                            dateTime: DateTime.now(),
+                          ),
                           controller: timeController,
                           messageValidate: S.of(context).timeIsRequired,
                           onTap: () async {
-                            var timePicked = await _selectTime(context);
+                            TimeOfDay? timePicked = await _selectTime(context);
                             if (timePicked != null) {
+                              DateTime dateTime =
+                                  convertTimeOfDayToDateTime(time: timePicked);
                               setState(() {
-                                time = timePicked.toString();
+                                time = dateTime.toString();
                                 timeController.text =
-                                    formatTime(time: timePicked);
+                                    formatTime(dateTime: dateTime);
                               });
                             }
                           },
@@ -176,7 +180,14 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
   Future<TimeOfDay?> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
-      initialTime: TimeOfDay.fromDateTime(DateTime.now()),
+      initialTime: TimeOfDay.now(),
+      builder: (BuildContext context, Widget? child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+        child: Localizations.override(
+          context: context,
+          child: child!,
+        ),
+      ),
     );
     return pickedTime;
   }
