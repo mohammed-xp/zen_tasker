@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zen_tasker/core/widgets/custom_progress.dart';
 import 'package:zen_tasker/features/create_task/presentation/managers/create_task_cubit/create_task_cubit.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/create_task_view_body.dart';
+import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 
 class CreateTaskViewBodyBloc extends StatelessWidget {
   const CreateTaskViewBodyBloc({super.key});
@@ -12,6 +13,7 @@ class CreateTaskViewBodyBloc extends StatelessWidget {
     return BlocConsumer<CreateTaskCubit, CreateTaskState>(
       listener: (context, state) {
         if (state is CreateTaskSuccess) {
+          BlocProvider.of<FetchTasksCubit>(context).fetchAllTasks();
           Navigator.pop(context);
         }
 

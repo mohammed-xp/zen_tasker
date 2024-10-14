@@ -7,20 +7,24 @@ import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/features/home/presentation/views/details_view.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_check_box.dart';
 
-class TaskItem extends StatefulWidget {
-  const TaskItem({super.key, required this.onChecked, required this.taskModel});
+class TaskDoneItem extends StatefulWidget {
+  const TaskDoneItem({
+    super.key,
+    required this.onChecked,
+    required this.taskModel,
+  });
 
   final ValueChanged<bool> onChecked;
   final TaskModel taskModel;
 
   @override
-  State<TaskItem> createState() => _TaskItemState();
+  State<TaskDoneItem> createState() => _TaskDoneItemState();
 }
 
-class _TaskItemState extends State<TaskItem> {
-  bool isTaskDone = false;
+class _TaskDoneItemState extends State<TaskDoneItem> {
   @override
   Widget build(BuildContext context) {
+    bool isTaskDone = widget.taskModel.isDone;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
@@ -33,7 +37,7 @@ class _TaskItemState extends State<TaskItem> {
         aspectRatio: 378 / 183,
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.lightPrimaryColor,
             border: Border.all(
               color: Colors.black.withOpacity(0.05000000074505806),
               width: 0.5,
@@ -56,11 +60,12 @@ class _TaskItemState extends State<TaskItem> {
                 children: [
                   CustomCheckBox(
                     isChecked: isTaskDone,
-                    onChecked: (value) {
-                      isTaskDone = value;
-                      widget.onChecked(value);
-                      setState(() {});
-                    },
+                    onChecked: widget.onChecked,
+                    // onChecked: (value) {
+                    //   isTaskDone = value;
+                    //   widget.onChecked(value);
+                    //   setState(() {});
+                    // },
                   ),
                   const SizedBox(
                     width: 16,
@@ -70,11 +75,15 @@ class _TaskItemState extends State<TaskItem> {
                     children: [
                       Text(
                         widget.taskModel.title,
-                        style: AppStyles.styleMedium16(context),
+                        style: AppStyles.styleSemiBold20(context).copyWith(
+                          decoration: TextDecoration.lineThrough,
+                        ),
                       ),
                       Text(
                         widget.taskModel.description,
-                        style: AppStyles.styleRegular13(context),
+                        style: AppStyles.styleRegular15(context).copyWith(
+                          color: Colors.white.withOpacity(0.8),
+                        ),
                         maxLines: 2,
                       ),
                     ],
@@ -95,7 +104,7 @@ class _TaskItemState extends State<TaskItem> {
                 children: [
                   const Icon(
                     Icons.access_time_rounded,
-                    color: AppColors.primaryColor,
+                    color: Colors.white,
                   ),
                   const SizedBox(
                     width: 4,

@@ -28,5 +28,9 @@
     "dateIsRequired": "Date is required",
     "timeIsRequired": "Time is required",
     "hintTitle": "Task title",
-    "hintDescription": "Description of the task"
+    "hintDescription": "Description of the task",
+    "noData": "No tasks, add a task",
+    "somethingWentWrong": "Something went wrong, please try again",
+    "delete": "Delete",
+    "details": "Details"
 }

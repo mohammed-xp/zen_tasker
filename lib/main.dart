@@ -8,6 +8,8 @@ import 'package:zen_tasker/core/services/custom_bloc_observer.dart';
 import 'package:zen_tasker/core/services/get_it_service.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
+import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
+import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:zen_tasker/features/splash/presentation/views/splash_view.dart';
 import 'core/helper_function/on_generate_routes.dart';
 import 'generated/l10n.dart';
@@ -35,27 +37,31 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Zen Tasker',
-      locale: const Locale('en'),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primaryColor,
+    return BlocProvider(
+      create: (context) =>
+          FetchTasksCubit(getIt.get<TaskRepo>())..fetchAllTasks(),
+      child: MaterialApp(
+        title: 'Zen Tasker',
+        locale: const Locale('en'),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        theme: ThemeData(
+          fontFamily: 'Cairo',
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.primaryColor,
+          ),
+          useMaterial3: true,
+          scaffoldBackgroundColor: Colors.white,
         ),
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: onGenerateRoute,
+        initialRoute: SplashView.routeName,
       ),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.routeName,
     );
   }
 }

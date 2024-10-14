@@ -28,5 +28,10 @@
     "dateIsRequired": "يجب تحديد التاريخ",
     "timeIsRequired": "يجب تحديد الوقت",
       "hintTitle": "عنوان المهمة",
-    "hintDescription": "وصف للمهمة"
+    "hintDescription": "وصف للمهمة",
+    "noData": "لا توجد مهام ، قم بإضافة مهمة",
+    "somethingWentWrong": "حدث خطأ ، يرجى المحاولة مرة أخرى",
+    "delete": "حذف",
+    "details": "تفاصيل"
+
 }

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:zen_tasker/core/utils/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
+import 'package:zen_tasker/constants.dart';
+import 'package:zen_tasker/core/models/task_model.dart';
+import 'package:zen_tasker/core/services/get_it_service.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
-import 'package:zen_tasker/features/create_task/presentation/views/create_task_view.dart';
+import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
+import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
+import 'package:zen_tasker/features/home/presentation/views/widgets/custom_floating_action_button.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -20,37 +26,16 @@ class HomeView extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              var taskBox = Hive.box<TaskModel>(kTasksBox);
+              taskBox.clear();
+            },
             icon: const Icon(Icons.more_vert_rounded),
           ),
         ],
       ),
       body: const HomeViewBody(),
-      floatingActionButton: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            CreateTaskView.routeName,
-          );
-        },
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            // color: AppColors.primaryColor,
-            gradient: LinearGradient(
-              begin: Alignment(1.00, -0.08),
-              end: Alignment(-1, 0.08),
-              colors: [AppColors.primaryColor, AppColors.lightPrimaryColor],
-            ),
-          ),
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-            size: 25,
-          ),
-        ),
-      ),
+      floatingActionButton: const CustomFloatingActionButton(),
     );
   }
 }

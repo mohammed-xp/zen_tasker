@@ -349,6 +349,46 @@ class S {
       args: [],
     );
   }
+
+  /// `No tasks, add a task`
+  String get noData {
+    return Intl.message(
+      'No tasks, add a task',
+      name: 'noData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong, please try again`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Something went wrong, please try again',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get details {
+    return Intl.message(
+      'Details',
+      name: 'details',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

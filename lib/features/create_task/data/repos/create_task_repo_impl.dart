@@ -9,8 +9,9 @@ import 'package:zen_tasker/features/create_task/data/repos/create_task_repo.dart
 
 class CreateTaskRepoImpl implements CreateTaskRepo {
   @override
-  Future<Either<Failure, void>> createTask(
-      {required TaskModel taskModel}) async {
+  Future<Either<Failure, void>> createTask({
+    required TaskModel taskModel,
+  }) async {
     try {
       var taskBox = Hive.box<TaskModel>(kTasksBox);
 

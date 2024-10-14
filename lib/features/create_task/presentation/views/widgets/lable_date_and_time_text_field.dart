@@ -25,7 +25,9 @@ class LableDateAndTimeTextField extends StatelessWidget {
       children: [
         Text(
           title,
-          style: AppStyles.styleMedium12(context),
+          style: AppStyles.styleMedium16(context).copyWith(
+            color: const Color(0xFF363942),
+          ),
         ),
         const SizedBox(
           height: 8,

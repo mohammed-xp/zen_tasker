@@ -74,7 +74,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                           controller: dateController,
                           messageValidate: S.of(context).dateIsRequired,
                           onTap: () async {
-                            var datePicked = await _selectDate(context);
+                            DateTime? datePicked = await _selectDate(context);
                             if (datePicked != null) {
                               setState(() {
                                 date = datePicked.toString();
@@ -84,7 +84,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                             }
                           },
                           onSaved: (value) {
-                            date = value!;
+                            // date = value!;
                           },
                         ),
                       ),
@@ -106,13 +106,12 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                                   convertTimeOfDayToDateTime(time: timePicked);
                               setState(() {
                                 time = dateTime.toString();
-                                timeController.text =
-                                    formatTime(dateTime: dateTime);
+                                timeController.text = dateTime.toString();
                               });
                             }
                           },
                           onSaved: (value) {
-                            date = value!;
+                            // time = value!;
                             setState(() {});
                           },
                         ),
@@ -185,6 +184,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
         data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
         child: Localizations.override(
           context: context,
+          // locale: const Locale('en', 'US'),
           child: child!,
         ),
       ),

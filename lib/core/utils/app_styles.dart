@@ -58,6 +58,12 @@ abstract class AppStyles {
         color: Colors.black,
       );
 
+  static TextStyle styleMedium20(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 20),
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+      );
+
   static TextStyle styleMedium16(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 16),
         fontWeight: FontWeight.w500,
@@ -74,6 +80,12 @@ abstract class AppStyles {
         fontSize: getResponsiveFontSize(context, fontSize: 18),
         fontWeight: FontWeight.w400,
         color: Colors.black,
+      );
+
+  static TextStyle styleRegular15(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 15),
+        fontWeight: FontWeight.w400,
+        color: Colors.grey,
       );
 
   static TextStyle styleRegular13(context) => TextStyle(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/create_task_view.dart';
+import 'package:zen_tasker/features/home/presentation/views/details_view.dart';
 import 'package:zen_tasker/features/home/presentation/views/home_view.dart';
 import 'package:zen_tasker/features/onboarding/presentation/views/onboarding_view.dart';
 
@@ -25,6 +27,13 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case CreateTaskView.routeName:
       return MaterialPageRoute(
         builder: (BuildContext context) => const CreateTaskView(),
+      );
+
+    case DetailsView.routeName:
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (BuildContext context) =>
+            DetailsView(settings.arguments as TaskModel),
       );
 
     default:
