@@ -17,7 +17,20 @@ class TaskRepoImpl implements TaskRepo {
 
       return right(tasks);
     } catch (e) {
-      log('Exception in FetchTaskRepoImpl.fetchTasks: ${e.toString()}');
+      log('Exception in TaskRepoImpl.fetchTasks: ${e.toString()}');
+      return left(LocalFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateTask(
+      {required TaskModel taskModel}) async {
+    try {
+      await taskModel.save();
+
+      return right(null);
+    } catch (e) {
+      log('Exception in TaskRepoImpl.updateTask: ${e.toString()}');
       return left(LocalFailure(e.toString()));
     }
   }

@@ -7,37 +7,35 @@ import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/features/home/presentation/views/details_view.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_check_box.dart';
 
-class TaskDoneItem extends StatefulWidget {
+class TaskDoneItem extends StatelessWidget {
   const TaskDoneItem({
     super.key,
     required this.onChecked,
     required this.taskModel,
+    required this.isTaskDone,
   });
 
   final ValueChanged<bool> onChecked;
   final TaskModel taskModel;
+  final bool isTaskDone;
 
-  @override
-  State<TaskDoneItem> createState() => _TaskDoneItemState();
-}
-
-class _TaskDoneItemState extends State<TaskDoneItem> {
   @override
   Widget build(BuildContext context) {
-    bool isTaskDone = widget.taskModel.isDone;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
           context,
           DetailsView.routeName,
-          arguments: widget.taskModel,
+          arguments: taskModel,
         );
       },
       child: AspectRatio(
         aspectRatio: 378 / 183,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeIn,
           decoration: BoxDecoration(
-            color: AppColors.lightPrimaryColor,
+            color: isTaskDone ? AppColors.lightPrimaryColor : Colors.white,
             border: Border.all(
               color: Colors.black.withOpacity(0.05000000074505806),
               width: 0.5,
@@ -60,12 +58,12 @@ class _TaskDoneItemState extends State<TaskDoneItem> {
                 children: [
                   CustomCheckBox(
                     isChecked: isTaskDone,
-                    onChecked: widget.onChecked,
-                    // onChecked: (value) {
-                    //   isTaskDone = value;
-                    //   widget.onChecked(value);
-                    //   setState(() {});
-                    // },
+                    // onChecked: widget.onChecked,
+                    onChecked: (value) {
+                      // isTaskDone = value;
+                      onChecked(value);
+                      // setState(() {});
+                    },
                   ),
                   const SizedBox(
                     width: 16,
@@ -74,15 +72,18 @@ class _TaskDoneItemState extends State<TaskDoneItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.taskModel.title,
+                        taskModel.title,
                         style: AppStyles.styleSemiBold20(context).copyWith(
-                          decoration: TextDecoration.lineThrough,
+                          decoration: isTaskDone
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
                         ),
                       ),
                       Text(
-                        widget.taskModel.description,
+                        taskModel.description,
                         style: AppStyles.styleRegular15(context).copyWith(
-                          color: Colors.white.withOpacity(0.8),
+                          color:
+                              isTaskDone ? Colors.white.withOpacity(0.8) : null,
                         ),
                         maxLines: 2,
                       ),
@@ -102,33 +103,35 @@ class _TaskDoneItemState extends State<TaskDoneItem> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.access_time_rounded,
-                    color: Colors.white,
+                    color: isTaskDone ? Colors.white : AppColors.primaryColor,
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   Text(
                     // widget.taskModel.time,
-                    formatTime(dateTime: DateTime.parse(widget.taskModel.time)),
+                    formatTime(dateTime: DateTime.parse(taskModel.time)),
                     style: AppStyles.styleRegular13(context).copyWith(
-                      color: const Color(0xFF363841),
+                      color:
+                          isTaskDone ? Colors.white : const Color(0xFF363841),
                     ),
                   ),
                   const Spacer(),
-                  const Icon(
+                  Icon(
                     Icons.calendar_month_rounded,
-                    color: AppColors.primaryColor,
+                    color: isTaskDone ? Colors.white : AppColors.primaryColor,
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   Text(
                     // widget.taskModel.date,
-                    formatDate(date: DateTime.parse(widget.taskModel.date)),
+                    formatDate(date: DateTime.parse(taskModel.date)),
                     style: AppStyles.styleRegular13(context).copyWith(
-                      color: const Color(0xFF363841),
+                      color:
+                          isTaskDone ? Colors.white : const Color(0xFF363841),
                     ),
                   ),
                 ],

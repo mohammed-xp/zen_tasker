@@ -10,6 +10,7 @@ import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
+import 'package:zen_tasker/features/home/presentation/managers/update_task_cubit/update_task_cubit.dart';
 import 'package:zen_tasker/features/splash/presentation/views/splash_view.dart';
 import 'core/helper_function/on_generate_routes.dart';
 import 'generated/l10n.dart';
@@ -37,9 +38,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          FetchTasksCubit(getIt.get<TaskRepo>())..fetchAllTasks(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              FetchTasksCubit(getIt.get<TaskRepo>())..fetchAllTasks(),
+        ),
+        BlocProvider(
+          create: (context) => UpdateTaskCubit(getIt.get<TaskRepo>()),
+        ),
+      ],
       child: MaterialApp(
         title: 'Zen Tasker',
         locale: const Locale('en'),

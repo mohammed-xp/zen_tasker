@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
@@ -22,7 +20,6 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
         emit(FetchTasksFailure(message: failure.message));
       },
       (tasks) {
-        log('tasks: $tasks');
         emit(FetchTasksSuccess(tasks: tasks));
       },
     );
