@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
+import 'package:zen_tasker/core/services/custom_bloc_observer.dart';
+import 'package:zen_tasker/core/services/get_it_service.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/features/splash/presentation/views/splash_view.dart';
@@ -15,9 +18,13 @@ void main() async {
 
   await Hive.initFlutter();
 
-  await Hive.openBox(kTasksBox);
+  await Hive.openBox<TaskModel>(kTasksBox);
 
-  Hive.registerAdapter(TaskModelAdapter());
+  Hive.registerAdapter<TaskModel>(TaskModelAdapter());
+
+  Bloc.observer = CustomBlocObserver();
+
+  setupGetIt();
 
   runApp(const MyApp());
 }

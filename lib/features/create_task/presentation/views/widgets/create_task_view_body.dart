@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
+import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/core/widgets/custom_button.dart';
+import 'package:zen_tasker/features/create_task/presentation/managers/create_task_cubit/create_task_cubit.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/lable_date_and_time_text_field.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/lable_text_form_field.dart';
 import 'package:zen_tasker/generated/l10n.dart';
@@ -131,6 +134,16 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
+                        TaskModel taskModel = TaskModel(
+                          title: title!,
+                          description: description!,
+                          date: date!,
+                          time: time!,
+                          isDone: false,
+                        );
+                        context
+                            .read<CreateTaskCubit>()
+                            .createTask(taskModel: taskModel);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
@@ -145,13 +158,6 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
               ),
             ),
           ),
-          // SliverFillRemaining(
-          //   hasScrollBody: false,
-          //   child: CustomButton(
-          //     onPressed: () {},
-          //     text: S.of(context).addTask,
-          //   ),
-          // ),
         ],
       ),
     );
