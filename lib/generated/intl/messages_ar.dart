@@ -31,16 +31,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
+        "done": MessageLookupByLibrary.simpleMessage("تم"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "findYourTask": MessageLookupByLibrary.simpleMessage("ابحث عن مهمتك"),
         "goodEvening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
         "hintDescription": MessageLookupByLibrary.simpleMessage("وصف للمهمة"),
         "hintTitle": MessageLookupByLibrary.simpleMessage("عنوان المهمة"),
+        "kOf": MessageLookupByLibrary.simpleMessage("من"),
         "myTask": MessageLookupByLibrary.simpleMessage("مهماتي"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noData": MessageLookupByLibrary.simpleMessage(
             "لا توجد مهام ، قم بإضافة مهمة"),
+        "notFinished": MessageLookupByLibrary.simpleMessage("غير مكتمل"),
         "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
             "ابدأ بتنظيم يومك وإدارة مهامك بسهولة. لن تضيع أي مهمة بعد الآن!"),
         "onBoardingSubTitle2": MessageLookupByLibrary.simpleMessage(
@@ -62,7 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
             "حدث خطأ ، يرجى المحاولة مرة أخرى"),
         "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "state": MessageLookupByLibrary.simpleMessage("الحالة"),
         "tasker": MessageLookupByLibrary.simpleMessage("تاسكر"),
+        "tasks": MessageLookupByLibrary.simpleMessage("مهام"),
         "time": MessageLookupByLibrary.simpleMessage("الوقت"),
         "timeIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب تحديد الوقت"),

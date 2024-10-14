@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Zen Tasker',
-        locale: const Locale('en'),
+        locale: const Locale('ar'),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("Description is required"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
+        "done": MessageLookupByLibrary.simpleMessage("Done"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "findYourTask": MessageLookupByLibrary.simpleMessage("Find Your Task"),
         "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening"),
@@ -38,9 +39,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "hintDescription":
             MessageLookupByLibrary.simpleMessage("Description of the task"),
         "hintTitle": MessageLookupByLibrary.simpleMessage("Task title"),
+        "kOf": MessageLookupByLibrary.simpleMessage("of"),
         "myTask": MessageLookupByLibrary.simpleMessage("My Tasks"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noData": MessageLookupByLibrary.simpleMessage("No tasks, add a task"),
+        "notFinished": MessageLookupByLibrary.simpleMessage("Not Finished"),
         "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
             "Start organizing your day and managing your tasks with ease. Never miss a task again!"),
         "onBoardingSubTitle2": MessageLookupByLibrary.simpleMessage(
@@ -63,7 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
             "Something went wrong, please try again"),
         "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+        "state": MessageLookupByLibrary.simpleMessage("State"),
         "tasker": MessageLookupByLibrary.simpleMessage("Tasker"),
+        "tasks": MessageLookupByLibrary.simpleMessage("tasks"),
         "time": MessageLookupByLibrary.simpleMessage("Time"),
         "timeIsRequired":
             MessageLookupByLibrary.simpleMessage("Time is required"),

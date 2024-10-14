@@ -33,5 +33,10 @@
     "somethingWentWrong": "Something went wrong, please try again",
     "delete": "Delete",
     "details": "Details",
-    "edit": "Edit"
+    "edit": "Edit",
+    "state": "State",
+    "done": "Done",
+    "notFinished": "Not Finished",
+    "kOf": "of",
+    "tasks": "tasks"
 }

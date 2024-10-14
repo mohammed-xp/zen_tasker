@@ -399,6 +399,56 @@ class S {
       args: [],
     );
   }
+
+  /// `State`
+  String get state {
+    return Intl.message(
+      'State',
+      name: 'state',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message(
+      'Done',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Finished`
+  String get notFinished {
+    return Intl.message(
+      'Not Finished',
+      name: 'notFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `of`
+  String get kOf {
+    return Intl.message(
+      'of',
+      name: 'kOf',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tasks`
+  String get tasks {
+    return Intl.message(
+      'tasks',
+      name: 'tasks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

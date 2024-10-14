@@ -33,6 +33,11 @@
     "somethingWentWrong": "حدث خطأ ، يرجى المحاولة مرة أخرى",
     "delete": "حذف",
     "details": "تفاصيل",
-    "edit": "تعديل"
+    "edit": "تعديل",
+    "state": "الحالة",
+    "done": "تم",
+    "notFinished": "غير مكتمل",
+    "kOf": "من",
+    "tasks": "مهام"
 
 }

@@ -57,14 +57,29 @@ class HomeViewBody extends StatelessWidget {
                                       width: 16,
                                     ),
                                     Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           S.of(context).myTask,
                                           style: AppStyles.styleSemiBold20(
                                               context),
                                         ),
-                                        Text(
-                                          '${isDone} to ${tasks} tasks',
+                                        Text.rich(
+                                          TextSpan(children: [
+                                            TextSpan(
+                                              text: '$isDone',
+                                            ),
+                                            TextSpan(
+                                              text: ' ${S.of(context).kOf} ',
+                                            ),
+                                            TextSpan(
+                                              text: '$tasks',
+                                            ),
+                                            TextSpan(
+                                              text: ' ${S.of(context).tasks}',
+                                            ),
+                                          ]),
                                           style:
                                               AppStyles.styleMedium16(context)
                                                   .copyWith(

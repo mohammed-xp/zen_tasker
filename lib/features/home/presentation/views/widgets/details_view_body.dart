@@ -3,7 +3,9 @@ import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
+import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/core/widgets/custom_button.dart';
+import 'package:zen_tasker/features/home/presentation/views/widgets/custom_lable_and_state.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_lable_and_text.dart';
 import 'package:zen_tasker/generated/l10n.dart';
 
@@ -49,6 +51,16 @@ class DetailsViewBody extends StatelessWidget {
                 CustomLableAndText(
                   lable: S.of(context).description,
                   text: taskModel.description,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomLableAndState(
+                  label: S.of(context).state,
+                  state: taskModel.isDone,
+                ),
+                const SizedBox(
+                  height: 40,
                 ),
                 const Spacer(),
                 CustomButton(
