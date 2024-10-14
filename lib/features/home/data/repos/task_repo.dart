@@ -6,4 +6,6 @@ abstract class TaskRepo {
   Future<Either<Failure, List<TaskModel>>> fetchAllTasks();
 
   Future<Either<Failure, void>> updateTask({required TaskModel taskModel});
+
+  Future<Either<Failure, void>> deleteTask({required TaskModel taskModel});
 }

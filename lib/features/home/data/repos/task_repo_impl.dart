@@ -34,4 +34,17 @@ class TaskRepoImpl implements TaskRepo {
       return left(LocalFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteTask(
+      {required TaskModel taskModel}) async {
+    try {
+      await taskModel.delete();
+
+      return right(null);
+    } catch (e) {
+      log('Exception in TaskRepoImpl.updateTask: ${e.toString()}');
+      return left(LocalFailure(e.toString()));
+    }
+  }
 }

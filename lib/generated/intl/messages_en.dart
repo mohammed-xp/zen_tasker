@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addTask": MessageLookupByLibrary.simpleMessage("Add Task"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateIsRequired":
             MessageLookupByLibrary.simpleMessage("Date is required"),
@@ -40,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Description of the task"),
         "hintTitle": MessageLookupByLibrary.simpleMessage("Task title"),
         "kOf": MessageLookupByLibrary.simpleMessage("of"),
+        "messageAlertToDelete": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to clear this task, you did not complete it!!"),
         "myTask": MessageLookupByLibrary.simpleMessage("My Tasks"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noData": MessageLookupByLibrary.simpleMessage("No tasks, add a task"),
@@ -75,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "titleIsRequired":
             MessageLookupByLibrary.simpleMessage("Title is required"),
+        "warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
         "zen": MessageLookupByLibrary.simpleMessage("Zen")
       };
