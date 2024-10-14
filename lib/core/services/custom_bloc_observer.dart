@@ -13,12 +13,16 @@ class CustomBlocObserver implements BlocObserver {
 
   @override
   void onClose(BlocBase bloc) {
-    // TODO: implement onClose
+    if (kDebugMode) {
+      log('Close: $bloc');
+    }
   }
 
   @override
   void onCreate(BlocBase bloc) {
-    // TODO: implement onCreate
+    if (kDebugMode) {
+      log('Create: $bloc');
+    }
   }
 
   @override
