@@ -16,5 +16,17 @@
     "onBoardingSubTitle5": "ابدأ اليوم بتنظيم حياتك وإنجاز المزيد بسهولة!",
     "goodMorning": "صباح الخير",
     "goodEvening": "مساء الخير",
-    "findYourTask": "ابحث عن مهمتك"
+    "findYourTask": "ابحث عن مهمتك",
+    "myTask": "مهماتي",
+    "addTask": "اضافة مهمة",
+    "title": "العنوان",
+    "description": "وصف",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "titleIsRequired": "يجب كتابة العنوان",
+    "descriptionIsRequired": "يجب كتابة الوصف",
+    "dateIsRequired": "يجب تحديد التاريخ",
+    "timeIsRequired": "يجب تحديد الوقت",
+      "hintTitle": "عنوان المهمة",
+    "hintDescription": "وصف للمهمة"
 }

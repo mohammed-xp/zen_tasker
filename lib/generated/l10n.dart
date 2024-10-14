@@ -229,6 +229,126 @@ class S {
       args: [],
     );
   }
+
+  /// `My Tasks`
+  String get myTask {
+    return Intl.message(
+      'My Tasks',
+      name: 'myTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Task`
+  String get addTask {
+    return Intl.message(
+      'Add Task',
+      name: 'addTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time`
+  String get time {
+    return Intl.message(
+      'Time',
+      name: 'time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title is required`
+  String get titleIsRequired {
+    return Intl.message(
+      'Title is required',
+      name: 'titleIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description is required`
+  String get descriptionIsRequired {
+    return Intl.message(
+      'Description is required',
+      name: 'descriptionIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date is required`
+  String get dateIsRequired {
+    return Intl.message(
+      'Date is required',
+      name: 'dateIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Time is required`
+  String get timeIsRequired {
+    return Intl.message(
+      'Time is required',
+      name: 'timeIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task title`
+  String get hintTitle {
+    return Intl.message(
+      'Task title',
+      name: 'hintTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description of the task`
+  String get hintDescription {
+    return Intl.message(
+      'Description of the task',
+      name: 'hintDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

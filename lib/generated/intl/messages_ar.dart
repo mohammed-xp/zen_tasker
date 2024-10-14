@@ -22,9 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addTask": MessageLookupByLibrary.simpleMessage("اضافة مهمة"),
+        "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
+        "dateIsRequired":
+            MessageLookupByLibrary.simpleMessage("يجب تحديد التاريخ"),
+        "description": MessageLookupByLibrary.simpleMessage("وصف"),
+        "descriptionIsRequired":
+            MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),
         "findYourTask": MessageLookupByLibrary.simpleMessage("ابحث عن مهمتك"),
         "goodEvening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("صباح الخير"),
+        "hintDescription": MessageLookupByLibrary.simpleMessage("وصف للمهمة"),
+        "hintTitle": MessageLookupByLibrary.simpleMessage("عنوان المهمة"),
+        "myTask": MessageLookupByLibrary.simpleMessage("مهماتي"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
             "ابدأ بتنظيم يومك وإدارة مهامك بسهولة. لن تضيع أي مهمة بعد الآن!"),
@@ -46,6 +56,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("تخط"),
         "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "tasker": MessageLookupByLibrary.simpleMessage("تاسكر"),
+        "time": MessageLookupByLibrary.simpleMessage("الوقت"),
+        "timeIsRequired":
+            MessageLookupByLibrary.simpleMessage("يجب تحديد الوقت"),
+        "title": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "titleIsRequired":
+            MessageLookupByLibrary.simpleMessage("يجب كتابة العنوان"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("مرحباً بك في"),
         "zen": MessageLookupByLibrary.simpleMessage("زين ")
       };

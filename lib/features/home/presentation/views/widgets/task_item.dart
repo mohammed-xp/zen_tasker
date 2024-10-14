@@ -31,7 +31,7 @@ class _TaskItemState extends State<TaskItem> {
             color: Color(0x14000000),
             blurRadius: 16,
             offset: Offset(3, 3),
-            spreadRadius: 0,
+            spreadRadius: 3,
           )
         ],
       ),

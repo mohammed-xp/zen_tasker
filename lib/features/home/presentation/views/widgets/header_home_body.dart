@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/generated/l10n.dart';
 
@@ -16,7 +16,7 @@ class _HeaderHomeBodyState extends State<HeaderHomeBody> {
   @override
   void initState() {
     now = DateTime.now();
-    formattedDate = DateFormat('MMM dd, yyyy').format(now);
+    formattedDate = formatDate(date: now);
     super.initState();
   }
 

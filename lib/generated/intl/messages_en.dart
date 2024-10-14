@@ -22,9 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addTask": MessageLookupByLibrary.simpleMessage("Add Task"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "dateIsRequired":
+            MessageLookupByLibrary.simpleMessage("Date is required"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "descriptionIsRequired":
+            MessageLookupByLibrary.simpleMessage("Description is required"),
         "findYourTask": MessageLookupByLibrary.simpleMessage("Find Your Task"),
         "goodEvening": MessageLookupByLibrary.simpleMessage("Good Evening"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning"),
+        "hintDescription":
+            MessageLookupByLibrary.simpleMessage("Description of the task"),
+        "hintTitle": MessageLookupByLibrary.simpleMessage("Task title"),
+        "myTask": MessageLookupByLibrary.simpleMessage("My Tasks"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onBoardingSubTitle1": MessageLookupByLibrary.simpleMessage(
             "Start organizing your day and managing your tasks with ease. Never miss a task again!"),
@@ -47,6 +58,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
         "tasker": MessageLookupByLibrary.simpleMessage("Tasker"),
+        "time": MessageLookupByLibrary.simpleMessage("Time"),
+        "timeIsRequired":
+            MessageLookupByLibrary.simpleMessage("Time is required"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "titleIsRequired":
+            MessageLookupByLibrary.simpleMessage("Title is required"),
         "welcomeTo": MessageLookupByLibrary.simpleMessage("Welcome to"),
         "zen": MessageLookupByLibrary.simpleMessage("Zen")
       };
