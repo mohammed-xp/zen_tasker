@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
-import 'package:zen_tasker/core/services/get_it_service.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
-import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
-import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_floating_action_button.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/home_view_body.dart';
 

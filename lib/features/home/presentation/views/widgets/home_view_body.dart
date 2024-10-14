@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:zen_tasker/constants.dart';
-import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/core/widgets/custom_progress.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
