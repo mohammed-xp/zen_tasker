@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
+        "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "findYourTask": MessageLookupByLibrary.simpleMessage("ابحث عن مهمتك"),
         "goodEvening": MessageLookupByLibrary.simpleMessage("مساء الخير"),
         "goodMorning": MessageLookupByLibrary.simpleMessage("صباح الخير"),

@@ -31,10 +31,8 @@ class DetailsView extends StatelessWidget {
           ),
         ),
       ),
-      body: SafeArea(
-        child: DetailsViewBody(
-          taskModel: taskModel,
-        ),
+      body: DetailsViewBody(
+        taskModel: taskModel,
       ),
     );
   }

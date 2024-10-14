@@ -7,10 +7,16 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
+    this.backgroundColor,
+    this.textColor,
+    this.icon,
   });
 
   final void Function()? onPressed;
   final String text;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +25,31 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: backgroundColor ?? AppColors.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
         ),
         onPressed: onPressed,
-        child: Text(
-          text,
-          style: AppStyles.styleBold16(context).copyWith(
-            color: Colors.white,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (icon != null)
+              Icon(
+                icon,
+                color: textColor ?? Colors.white,
+              ),
+            if (icon != null)
+              const SizedBox(
+                width: 8,
+              ),
+            Text(
+              text,
+              style: AppStyles.styleBold23(context).copyWith(
+                color: textColor ?? Colors.white,
+              ),
+            ),
+          ],
         ),
       ),
     );

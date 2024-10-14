@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/constants.dart';
+import 'package:zen_tasker/core/helper_function/format_date.dart';
+import 'package:zen_tasker/core/helper_function/format_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
-import 'package:zen_tasker/features/create_task/presentation/views/widgets/lable_text_form_field.dart';
+import 'package:zen_tasker/core/widgets/custom_button.dart';
+import 'package:zen_tasker/features/home/presentation/views/widgets/custom_lable_and_text.dart';
 import 'package:zen_tasker/generated/l10n.dart';
 
 class DetailsViewBody extends StatelessWidget {
@@ -10,17 +14,65 @@ class DetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        LableTextFormField(
-          title: S.of(context).title,
-          hintText: S.of(context).hintTitle,
-          maxLines: 1,
-          textInputType: TextInputType.text,
-          messageValidate: S.of(context).titleIsRequired,
-          onSaved: (value) {},
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomLableAndText(
+                  lable: S.of(context).title,
+                  text: taskModel.title,
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomLableAndText(
+                      lable: S.of(context).date,
+                      text: formatDate(date: DateTime.parse(taskModel.date)),
+                    ),
+                    CustomLableAndText(
+                      lable: S.of(context).time,
+                      text:
+                          formatTime(dateTime: DateTime.parse(taskModel.date)),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomLableAndText(
+                  lable: S.of(context).description,
+                  text: taskModel.description,
+                ),
+                const Spacer(),
+                CustomButton(
+                  onPressed: () {},
+                  text: S.of(context).edit,
+                  icon: Icons.edit,
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                CustomButton(
+                  onPressed: () {},
+                  text: S.of(context).delete,
+                  backgroundColor: Colors.red,
+                  icon: Icons.delete,
+                ),
+                const SizedBox(
+                  height: 8,
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

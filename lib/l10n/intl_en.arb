@@ -32,5 +32,6 @@
     "noData": "No tasks, add a task",
     "somethingWentWrong": "Something went wrong, please try again",
     "delete": "Delete",
-    "details": "Details"
+    "details": "Details",
+    "edit": "Edit"
 }
