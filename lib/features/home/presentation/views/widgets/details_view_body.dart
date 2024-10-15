@@ -10,6 +10,7 @@ import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/core/widgets/custom_button.dart';
 import 'package:zen_tasker/features/home/presentation/managers/delete_task_cubit/delete_task_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
+import 'package:zen_tasker/features/home/presentation/views/edit_view.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_lable_and_state.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_lable_and_text.dart';
 import 'package:zen_tasker/generated/l10n.dart';
@@ -46,7 +47,7 @@ class DetailsViewBody extends StatelessWidget {
                     CustomLableAndText(
                       lable: S.of(context).time,
                       text:
-                          formatTime(dateTime: DateTime.parse(taskModel.date)),
+                          formatTime(dateTime: DateTime.parse(taskModel.time)),
                     ),
                   ],
                 ),
@@ -69,7 +70,13 @@ class DetailsViewBody extends StatelessWidget {
                 ),
                 const Spacer(),
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      EditView.routeName,
+                      arguments: taskModel,
+                    );
+                  },
                   text: S.of(context).edit,
                   icon: Icons.edit,
                 ),

@@ -12,6 +12,7 @@ class LableTextFormField extends StatelessWidget {
     this.maxLines,
     this.backgroundColor,
     required this.hintText,
+    this.controller,
   });
 
   final String title, hintText, messageValidate;
@@ -19,6 +20,7 @@ class LableTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final int? maxLines;
   final Color? backgroundColor;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class LableTextFormField extends StatelessWidget {
         ),
         CustomTextFormField(
           hintText: hintText,
+          controller: controller,
           onSaved: onSaved,
           messageValidate: messageValidate,
           textInputType: textInputType,

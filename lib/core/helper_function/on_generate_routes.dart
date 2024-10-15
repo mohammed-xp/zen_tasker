@@ -39,7 +39,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
 
     case EditView.routeName:
       return MaterialPageRoute(
-        builder: (BuildContext context) => const EditView(),
+        settings: settings,
+        builder: (BuildContext context) => EditView(
+          settings.arguments as TaskModel,
+        ),
       );
 
     default:

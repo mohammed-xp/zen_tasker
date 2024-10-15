@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.maxLines,
     this.backgroundColor,
     required this.hintText,
+    required this.controller,
   });
 
   final void Function(String?) onSaved;
@@ -17,11 +18,13 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final int? maxLines;
   final Color? backgroundColor;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
+      controller: controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return messageValidate;

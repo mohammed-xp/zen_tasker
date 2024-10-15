@@ -8,34 +8,44 @@ import 'package:zen_tasker/core/helper_function/open_date_picker.dart';
 import 'package:zen_tasker/core/helper_function/open_time_picker.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/core/widgets/custom_button.dart';
-import 'package:zen_tasker/features/create_task/presentation/managers/create_task_cubit/create_task_cubit.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/lable_date_and_time_text_field.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/lable_text_form_field.dart';
+import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
+import 'package:zen_tasker/features/home/presentation/managers/update_task_cubit/update_task_cubit.dart';
 import 'package:zen_tasker/generated/l10n.dart';
 
-class CreateTaskViewBody extends StatefulWidget {
-  const CreateTaskViewBody({super.key});
+class EditViewBody extends StatefulWidget {
+  const EditViewBody({super.key, required this.taskModel});
+
+  final TaskModel taskModel;
 
   @override
-  State<CreateTaskViewBody> createState() => _CreateTaskViewBodyState();
+  State<EditViewBody> createState() => _EditViewBodyState();
 }
 
-class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
+class _EditViewBodyState extends State<EditViewBody> {
+  final formKey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
 
-  String? title, description, date, time;
+  late String title, date, time, description;
 
   @override
   void initState() {
-    // dateController.text = formatDate(date: DateTime.now());
-    // timeController.text = formatTime(time: DateTime.now());
+    dateController.text =
+        formatDate(date: DateTime.parse(widget.taskModel.date));
+    timeController.text =
+        formatTime(dateTime: DateTime.parse(widget.taskModel.time));
+    titleController.text = widget.taskModel.title;
+    descriptionController.text = widget.taskModel.description;
+    title = widget.taskModel.title;
+    date = widget.taskModel.date;
+    time = widget.taskModel.time;
+    description = widget.taskModel.description;
     super.initState();
   }
 
@@ -55,6 +65,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                 children: [
                   LableTextFormField(
                     title: S.of(context).title,
+                    controller: titleController,
                     hintText: S.of(context).hintTitle,
                     maxLines: 1,
                     textInputType: TextInputType.text,
@@ -75,8 +86,8 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                           controller: dateController,
                           messageValidate: S.of(context).dateIsRequired,
                           onTap: () async {
-                            DateTime? datePicked =
-                                await openDatePicker(context);
+                            DateTime? datePicked = await openDatePicker(context,
+                                initialDate: DateTime.parse(date));
                             if (datePicked != null) {
                               setState(() {
                                 date = datePicked.toString();
@@ -102,8 +113,9 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                           controller: timeController,
                           messageValidate: S.of(context).timeIsRequired,
                           onTap: () async {
-                            TimeOfDay? timePicked =
-                                await openTimePicker(context);
+                            TimeOfDay? timePicked = await openTimePicker(
+                                context,
+                                initialTime: DateTime.parse(time));
                             if (timePicked != null) {
                               DateTime dateTime =
                                   convertTimeOfDayToDateTime(time: timePicked);
@@ -126,6 +138,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                   ),
                   LableTextFormField(
                     title: S.of(context).description,
+                    controller: descriptionController,
                     hintText: S.of(context).hintDescription,
                     textInputType: TextInputType.multiline,
                     maxLines: null,
@@ -140,22 +153,22 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-                        TaskModel taskModel = TaskModel(
-                          title: title!,
-                          description: description!,
-                          date: date!,
-                          time: time!,
-                          isDone: false,
-                        );
+                        widget.taskModel.title = title;
+                        widget.taskModel.date = date;
+                        widget.taskModel.time = time;
+                        widget.taskModel.description = description;
                         context
-                            .read<CreateTaskCubit>()
-                            .createTask(taskModel: taskModel);
+                            .read<UpdateTaskCubit>()
+                            .updateTask(taskModel: widget.taskModel);
+
+                        context.read<FetchTasksCubit>().fetchAllTasks();
+                        Navigator.pop(context);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
                       }
                     },
-                    text: S.of(context).addTask,
+                    text: S.of(context).edit,
                   ),
                   const SizedBox(
                     height: 8,

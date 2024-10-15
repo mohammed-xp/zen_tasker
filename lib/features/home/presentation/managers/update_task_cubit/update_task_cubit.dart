@@ -23,4 +23,18 @@ class UpdateTaskCubit extends Cubit<UpdateTaskState> {
       },
     );
   }
+
+  Future<void> updateTask({required TaskModel taskModel}) async {
+    emit(UpdateTaskLoading());
+
+    final result = await taskRepo.updateTask(taskModel: taskModel);
+    result.fold(
+      (failure) {
+        emit(UpdateTaskFailure(message: failure.message));
+      },
+      (success) {
+        emit(UpdateTaskSuccess());
+      },
+    );
+  }
 }
