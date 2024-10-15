@@ -75,8 +75,10 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                           controller: dateController,
                           messageValidate: S.of(context).dateIsRequired,
                           onTap: () async {
-                            DateTime? datePicked =
-                                await openDatePicker(context);
+                            DateTime? datePicked = await openDatePicker(context,
+                                initialDate: date != null
+                                    ? DateTime.parse(date!)
+                                    : null);
                             if (datePicked != null) {
                               setState(() {
                                 date = datePicked.toString();
@@ -102,14 +104,18 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                           controller: timeController,
                           messageValidate: S.of(context).timeIsRequired,
                           onTap: () async {
-                            TimeOfDay? timePicked =
-                                await openTimePicker(context);
+                            TimeOfDay? timePicked = await openTimePicker(
+                                context,
+                                initialTime: time != null
+                                    ? DateTime.parse(time!)
+                                    : null);
                             if (timePicked != null) {
                               DateTime dateTime =
                                   convertTimeOfDayToDateTime(time: timePicked);
                               setState(() {
                                 time = dateTime.toString();
-                                timeController.text = dateTime.toString();
+                                timeController.text =
+                                    formatTime(dateTime: dateTime);
                               });
                             }
                           },
