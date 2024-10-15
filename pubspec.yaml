@@ -49,6 +49,7 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.1
   build_runner: ^2.4.11
   flutter_lints: ^3.0.0
   flutter_test:
@@ -111,3 +112,12 @@ flutter_assets:
   filename: app_images.dart
   field_prefix: null
   classname: AppImages
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_app.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/logo_app.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21 # android min sdk min:16, default 21
