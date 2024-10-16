@@ -4,6 +4,7 @@ import 'package:zen_tasker/core/widgets/alert_dialog_widget.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
 import 'package:zen_tasker/features/home/presentation/managers/delete_task_cubit/delete_task_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
+import 'package:zen_tasker/features/home/presentation/managers/tasks_cubit/tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_floating_action_button.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/home_view_body.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/lable_menu_item.dart';
@@ -32,7 +33,7 @@ class HomeView extends StatelessWidget {
                   icon: Icons.translate_rounded,
                 ),
                 onTap: () {
-                  print('-------------- change language');
+                  context.read<TasksCubit>().changeLanguage(context);
                 },
               ),
               const PopupMenuDivider(),
