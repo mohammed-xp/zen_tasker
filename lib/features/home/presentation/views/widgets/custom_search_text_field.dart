@@ -6,12 +6,21 @@ import 'package:zen_tasker/core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key});
+  const CustomSearchTextField({
+    super.key,
+    required this.controller,
+    required this.onChanged,
+  });
+
+  final TextEditingController controller;
+  final void Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       keyboardType: TextInputType.text,
+      onChanged: onChanged,
+      controller: controller,
       decoration: InputDecoration(
         suffixIcon: IconButton(
           // icon: const Icon(Icons.search_rounded),

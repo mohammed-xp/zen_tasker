@@ -10,6 +10,10 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
 
   final TaskRepo taskRepo;
 
+  List<TaskModel> allTasks = [];
+
+  List<TaskModel> filteredTasks = [];
+
   Future<void> fetchAllTasks() async {
     emit(FetchTasksLoading());
 
@@ -20,8 +24,22 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
         emit(FetchTasksFailure(message: failure.message));
       },
       (tasks) {
-        emit(FetchTasksSuccess(tasks: tasks));
+        allTasks = tasks;
+        filteredTasks = tasks;
+        emit(FetchTasksSuccess());
       },
     );
+  }
+
+  void searchTasks(String query) {
+    if (query.isEmpty) {
+      filteredTasks = allTasks;
+    } else {
+      filteredTasks = allTasks
+          .where(
+              (task) => task.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+    emit(FetchTasksSuccess());
   }
 }

@@ -50,46 +50,56 @@ class TaskDoneItem extends StatelessWidget {
               )
             ],
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  CustomCheckBox(
-                    isChecked: isTaskDone,
-                    // onChecked: widget.onChecked,
-                    onChecked: (value) {
-                      // isTaskDone = value;
-                      onChecked(value);
-                      // setState(() {});
-                    },
-                  ),
-                  const SizedBox(
-                    width: 16,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        taskModel.title,
-                        style: AppStyles.styleSemiBold20(context).copyWith(
-                          decoration: isTaskDone
-                              ? TextDecoration.lineThrough
-                              : TextDecoration.none,
-                        ),
+              Expanded(
+                child: Row(
+                  children: [
+                    CustomCheckBox(
+                      isChecked: isTaskDone,
+                      // onChecked: widget.onChecked,
+                      onChecked: (value) {
+                        // isTaskDone = value;
+                        onChecked(value);
+                        // setState(() {});
+                      },
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            taskModel.title,
+                            style: AppStyles.styleSemiBold20(context).copyWith(
+                              decoration: isTaskDone
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Expanded(
+                            child: Text(
+                              taskModel.description,
+                              style: AppStyles.styleRegular15(context).copyWith(
+                                color: isTaskDone
+                                    ? Colors.white.withOpacity(0.8)
+                                    : null,
+                              ),
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                              // maxLines: 2,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        taskModel.description,
-                        style: AppStyles.styleRegular15(context).copyWith(
-                          color:
-                              isTaskDone ? Colors.white.withOpacity(0.8) : null,
-                        ),
-                        maxLines: 2,
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 16,

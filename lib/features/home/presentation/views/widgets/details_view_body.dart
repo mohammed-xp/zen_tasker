@@ -100,7 +100,15 @@ class DetailsViewBody extends StatelessWidget {
                         closeIcon: const SizedBox(),
                         buttons: [
                           DialogButton(
-                            onPressed: () => Navigator.pop(context),
+                            onPressed: () {
+                              context
+                                  .read<DeleteTaskCubit>()
+                                  .deleteTask(taskModel: taskModel);
+                              Navigator.pop(context);
+                              context.read<FetchTasksCubit>().fetchAllTasks();
+
+                              Navigator.pop(context);
+                            },
                             color: Colors.red,
                             child: Text(
                               S.of(context).delete,

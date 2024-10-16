@@ -41,7 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hintTitle": MessageLookupByLibrary.simpleMessage("عنوان المهمة"),
         "kOf": MessageLookupByLibrary.simpleMessage("من"),
         "messageAlertToDelete": MessageLookupByLibrary.simpleMessage(
-            "هل ان متأكد من أنك تريد ان تمسح هذه المهمة ، انت لم تكملها !!"),
+            "هل انت متأكد من أنك تريد ان تمسح هذه المهمة ، انت لم تكملها !!"),
         "myTask": MessageLookupByLibrary.simpleMessage("مهماتي"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noData": MessageLookupByLibrary.simpleMessage(

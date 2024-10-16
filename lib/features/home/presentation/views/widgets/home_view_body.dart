@@ -5,103 +5,114 @@ import 'package:zen_tasker/core/utils/app_styles.dart';
 import 'package:zen_tasker/core/widgets/custom_progress.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_error_widget.dart';
-import 'package:zen_tasker/features/home/presentation/views/widgets/custom_not_found_widget.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/header_home_body.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/percent_indicator_widget.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/sliver_task_list_view.dart';
 import 'package:zen_tasker/generated/l10n.dart';
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
 
   @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  final TextEditingController searchController = TextEditingController();
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchTasksCubit, FetchTasksState>(
+    return BlocConsumer<FetchTasksCubit, FetchTasksState>(
+      listener: (context, state) {},
       builder: (context, state) {
-        var tasks = 0;
-        var isDone = 0;
+        var tasks = BlocProvider.of<FetchTasksCubit>(context).allTasks;
+        var tasksLength = 0;
+        var isDoneLength = 0;
         if (state is FetchTasksSuccess) {
-          tasks = state.tasks.length;
-          isDone = state.tasks.where((element) => element.isDone).length;
+          tasksLength = tasks.length;
+          isDoneLength = tasks.where((element) => element.isDone).length;
+          // BlocProvider.of<FetchTasksCubit>(context).filteredTasks = tasks;
         }
         return CustomProgress(
           isLoading: state is FetchTasksLoading,
           child: state is FetchTasksSuccess
-              ? state.tasks.isEmpty
-                  ? const CustomNotFoundWidget()
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: kHorizontalPadding),
-                      child: CustomScrollView(
-                        slivers: [
-                          SliverToBoxAdapter(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kHorizontalPadding),
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const HeaderHomeBody(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            CustomSearchTextField(
+                              controller: searchController,
+                              onChanged: (value) {
+                                BlocProvider.of<FetchTasksCubit>(context)
+                                    .searchTasks(value);
+                              },
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Row(
+                              // mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                const HeaderHomeBody(),
-                                const SizedBox(
-                                  height: 24,
+                                PercentIndicatorWidget(
+                                  percent: isDoneLength / tasksLength,
                                 ),
-                                const CustomSearchTextField(),
                                 const SizedBox(
-                                  height: 24,
+                                  width: 16,
                                 ),
-                                Row(
-                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    PercentIndicatorWidget(
-                                      percent: isDone / tasks,
+                                    Text(
+                                      S.of(context).myTask,
+                                      style: AppStyles.styleSemiBold20(context),
                                     ),
-                                    const SizedBox(
-                                      width: 16,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          S.of(context).myTask,
-                                          style: AppStyles.styleSemiBold20(
-                                              context),
+                                    Text.rich(
+                                      TextSpan(children: [
+                                        TextSpan(
+                                          text: '$isDoneLength',
                                         ),
-                                        Text.rich(
-                                          TextSpan(children: [
-                                            TextSpan(
-                                              text: '$isDone',
-                                            ),
-                                            TextSpan(
-                                              text: ' ${S.of(context).kOf} ',
-                                            ),
-                                            TextSpan(
-                                              text: '$tasks',
-                                            ),
-                                            TextSpan(
-                                              text: ' ${S.of(context).tasks}',
-                                            ),
-                                          ]),
-                                          style:
-                                              AppStyles.styleMedium16(context)
-                                                  .copyWith(
-                                            color: Colors.grey,
-                                          ),
+                                        TextSpan(
+                                          text: ' ${S.of(context).kOf} ',
                                         ),
-                                      ],
+                                        TextSpan(
+                                          text: '$tasksLength',
+                                        ),
+                                        TextSpan(
+                                          text: ' ${S.of(context).tasks}',
+                                        ),
+                                      ]),
+                                      style: AppStyles.styleMedium16(context)
+                                          .copyWith(
+                                        color: Colors.grey,
+                                      ),
                                     ),
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
                               ],
                             ),
-                          ),
-                          SliverTaskListView(
-                            tasks: state.tasks,
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 16,
+                            ),
+                          ],
+                        ),
                       ),
-                    )
+                      SliverTaskListView(
+                        tasks: BlocProvider.of<FetchTasksCubit>(context)
+                            .filteredTasks,
+                      ),
+                    ],
+                  ),
+                )
               : const CustomErrorWidget(),
         );
       },

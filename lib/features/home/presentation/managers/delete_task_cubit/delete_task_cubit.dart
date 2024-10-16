@@ -12,8 +12,8 @@ class DeleteTaskCubit extends Cubit<DeleteTaskState> {
 
   void deleteTask({required TaskModel taskModel}) async {
     emit(DeleteTaskLoading());
-    taskModel.isDone = !taskModel.isDone;
-    final result = await taskRepo.updateTask(taskModel: taskModel);
+
+    final result = await taskRepo.deleteTask(taskModel: taskModel);
     result.fold(
       (failure) {
         emit(DeleteTaskFailure(message: failure.message));
