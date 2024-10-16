@@ -41,5 +41,8 @@
     "tasks": "tasks",
     "warning": "Warning",
     "messageAlertToDelete": "Are you sure you want to clear this task, you did not complete it!!",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "changeLanguage": "Change Language",
+    "deleteAll": "Delete all tasks",
+    "messageAlertToDeleteAllTasks": "Are you sure you want to delete all tasks?"
 }

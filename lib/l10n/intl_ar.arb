@@ -41,6 +41,9 @@
     "tasks": "مهام",
     "warning": "تحذير",
     "messageAlertToDelete": "هل انت متأكد من أنك تريد ان تمسح هذه المهمة ، انت لم تكملها !!",
-    "cancel": "إلغاء"
+    "cancel": "إلغاء",
+    "changeLanguage": "تغيير اللغة",
+    "deleteAll": "حذف كل المهام",
+    "messageAlertToDeleteAllTasks": "هل انت متأكد من أنك تريد حذف جميع المهام؟"
 
 }

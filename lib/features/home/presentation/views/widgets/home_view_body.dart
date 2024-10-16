@@ -22,6 +22,13 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   final TextEditingController searchController = TextEditingController();
 
   @override
+  void dispose() {
+    searchController.dispose();
+    // FocusManager.instance.primaryFocus?.unfocus();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<FetchTasksCubit, FetchTasksState>(
       listener: (context, state) {},

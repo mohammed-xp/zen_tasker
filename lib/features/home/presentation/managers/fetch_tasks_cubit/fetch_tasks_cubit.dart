@@ -24,8 +24,23 @@ class FetchTasksCubit extends Cubit<FetchTasksState> {
         emit(FetchTasksFailure(message: failure.message));
       },
       (tasks) {
-        allTasks = tasks;
-        filteredTasks = tasks;
+        allTasks = tasks
+          ..sort((a, b) {
+            int isDoneComparison =
+                a.isDone == b.isDone ? 0 : (a.isDone ? 1 : -1);
+            if (isDoneComparison == 0) {
+              int dateComparison = a.date.compareTo(b.date);
+              if (dateComparison == 0) {
+                return a.time.compareTo(b.time);
+              } else {
+                return dateComparison;
+              }
+            } else {
+              return isDoneComparison;
+            }
+          });
+
+        filteredTasks = allTasks;
         emit(FetchTasksSuccess());
       },
     );

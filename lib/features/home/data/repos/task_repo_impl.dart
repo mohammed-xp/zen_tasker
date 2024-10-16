@@ -17,7 +17,7 @@ class TaskRepoImpl implements TaskRepo {
 
       return right(tasks);
     } catch (e) {
-      log('Exception in TaskRepoImpl.fetchTasks: ${e.toString()}');
+      log('Exception in TaskRepoImpl.fetchAllTasks: ${e.toString()}');
       return left(LocalFailure(e.toString()));
     }
   }
@@ -43,7 +43,20 @@ class TaskRepoImpl implements TaskRepo {
 
       return right(null);
     } catch (e) {
-      log('Exception in TaskRepoImpl.updateTask: ${e.toString()}');
+      log('Exception in TaskRepoImpl.deleteTask: ${e.toString()}');
+      return left(LocalFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteAllTasks(
+      {required List<TaskModel> tasks}) async {
+    try {
+      tasks.clear();
+
+      return right(null);
+    } catch (e) {
+      log('Exception in TaskRepoImpl.deleteAllTasks: ${e.toString()}');
       return left(LocalFailure(e.toString()));
     }
   }

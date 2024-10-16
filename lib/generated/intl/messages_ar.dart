@@ -24,10 +24,12 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addTask": MessageLookupByLibrary.simpleMessage("اضافة مهمة"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "date": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "dateIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب تحديد التاريخ"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "deleteAll": MessageLookupByLibrary.simpleMessage("حذف كل المهام"),
         "description": MessageLookupByLibrary.simpleMessage("وصف"),
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),
@@ -42,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kOf": MessageLookupByLibrary.simpleMessage("من"),
         "messageAlertToDelete": MessageLookupByLibrary.simpleMessage(
             "هل انت متأكد من أنك تريد ان تمسح هذه المهمة ، انت لم تكملها !!"),
+        "messageAlertToDeleteAllTasks": MessageLookupByLibrary.simpleMessage(
+            "هل انت متأكد من أنك تريد حذف جميع المهام؟"),
         "myTask": MessageLookupByLibrary.simpleMessage("مهماتي"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "noData": MessageLookupByLibrary.simpleMessage(

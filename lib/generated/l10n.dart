@@ -479,6 +479,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Change Language`
+  String get changeLanguage {
+    return Intl.message(
+      'Change Language',
+      name: 'changeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all tasks`
+  String get deleteAll {
+    return Intl.message(
+      'Delete all tasks',
+      name: 'deleteAll',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete all tasks?`
+  String get messageAlertToDeleteAllTasks {
+    return Intl.message(
+      'Are you sure you want to delete all tasks?',
+      name: 'messageAlertToDeleteAllTasks',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

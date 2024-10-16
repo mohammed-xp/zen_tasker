@@ -24,10 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addTask": MessageLookupByLibrary.simpleMessage("Add Task"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "changeLanguage":
+            MessageLookupByLibrary.simpleMessage("Change Language"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateIsRequired":
             MessageLookupByLibrary.simpleMessage("Date is required"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all tasks"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("Description is required"),
@@ -43,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "kOf": MessageLookupByLibrary.simpleMessage("of"),
         "messageAlertToDelete": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to clear this task, you did not complete it!!"),
+        "messageAlertToDeleteAllTasks": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete all tasks?"),
         "myTask": MessageLookupByLibrary.simpleMessage("My Tasks"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noData": MessageLookupByLibrary.simpleMessage("No tasks, add a task"),
