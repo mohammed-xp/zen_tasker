@@ -23,8 +23,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
 
   @override
   void dispose() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    FocusScope.of(context).unfocus();
     searchController.dispose();
-    // FocusManager.instance.primaryFocus?.unfocus();
+
     super.dispose();
   }
 

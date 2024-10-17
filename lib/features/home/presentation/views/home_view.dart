@@ -20,6 +20,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: isMobile(context) ? null : 80,
         backgroundColor: Colors.white,
