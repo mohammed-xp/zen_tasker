@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zen_tasker/core/helper_function/build_toast.dart';
+import 'package:zen_tasker/core/helper_function/custom_show_dialog.dart';
 import 'package:zen_tasker/core/helper_function/is_tablet.dart';
-import 'package:zen_tasker/core/widgets/alert_dialog_widget.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
 import 'package:zen_tasker/features/home/presentation/managers/delete_task_cubit/delete_task_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
@@ -28,6 +29,8 @@ class HomeView extends StatelessWidget {
         elevation: 0,
         actions: [
           PopupMenuButton<String>(
+            // icon: const Icon(Icons.more_vert_rounded),
+            iconSize: isMobile(context) ? null : 45,
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 child: LableMenuItem(
@@ -46,26 +49,23 @@ class HomeView extends StatelessWidget {
                 child: LableMenuItem(
                   text: S.of(context).deleteAll,
                   icon: Icons.delete_sweep_rounded,
+                  color: Colors.redAccent,
                 ),
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialogWidget(
-                        title: S.of(context).warning,
-                        confirmText: S.of(context).deleteAll,
-                        message: S.of(context).messageAlertToDeleteAllTasks,
-                        onConfirm: () {
-                          BlocProvider.of<DeleteTaskCubit>(context)
-                              .deleteAllTasks(
-                            tasks: BlocProvider.of<FetchTasksCubit>(context)
-                                .allTasks,
+                  customShowDialog(
+                    context,
+                    title: S.of(context).warning,
+                    confirmText: S.of(context).deleteAll,
+                    message: S.of(context).messageAlertToDeleteAllTasks,
+                    onConfirm: () {
+                      var tasks = context.read<FetchTasksCubit>().allTasks;
+                      context.read<DeleteTaskCubit>().deleteAllTasks(
+                            tasks: tasks,
                           );
-                          Navigator.pop(context);
-                        },
-                      );
+                      // context.read<FetchTasksCubit>().fetchAllTasks();
+                      // Navigator.pushReplacementNamed(
+                      //     context, HomeView.routeName);
                     },
-                    barrierDismissible: true,
                   );
                 },
               ),
@@ -73,7 +73,22 @@ class HomeView extends StatelessWidget {
           )
         ],
       ),
-      body: const HomeViewBody(),
+      body: BlocConsumer<DeleteTaskCubit, DeleteTaskState>(
+        listener: (context, state) {
+          if (state is DeleteTaskSuccess) {
+            buildToast(
+              context,
+              message: S.of(context).deletedAllTasks,
+              state: ToastStates.SUCCESS,
+            );
+            context.read<FetchTasksCubit>().fetchAllTasks();
+            Navigator.pop(context);
+          }
+        },
+        builder: (context, state) {
+          return const HomeViewBody();
+        },
+      ),
       floatingActionButton: const CustomFloatingActionButton(),
     );
   }

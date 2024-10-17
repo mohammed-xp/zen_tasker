@@ -100,6 +100,12 @@ abstract class AppStyles {
         color: Colors.black,
       );
 
+  static TextStyle styleMedium14(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 14),
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+      );
+
   static TextStyle styleMedium12(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 12),
         fontWeight: FontWeight.w500,

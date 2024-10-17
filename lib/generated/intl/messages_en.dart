@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date is required"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all tasks"),
+        "deletedAllTasks":
+            MessageLookupByLibrary.simpleMessage("All tasks deleted"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("Description is required"),

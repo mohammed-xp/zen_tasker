@@ -45,6 +45,7 @@
     "changeLanguage": "تغيير اللغة",
     "deleteAll": "حذف كل المهام",
     "messageAlertToDeleteAllTasks": "هل انت متأكد من أنك تريد حذف جميع المهام؟",
-    "start": "ابدأ"
+    "start": "ابدأ",
+    "deletedAllTasks": "تم حذف جميع المهام"
 
 }

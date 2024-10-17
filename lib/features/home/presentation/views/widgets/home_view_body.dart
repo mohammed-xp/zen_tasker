@@ -67,7 +67,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                                     tasksLength: tasksLength,
                                   ),
                             SizedBox(
-                              height: isMobile(context) ? 16 : 40,
+                              height: isMobile(context) ? 16 : 32,
                             ),
                           ],
                         ),

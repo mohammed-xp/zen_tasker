@@ -45,5 +45,6 @@
     "changeLanguage": "Change Language",
     "deleteAll": "Delete all tasks",
     "messageAlertToDeleteAllTasks": "Are you sure you want to delete all tasks?",
-    "start": "Start"
+    "start": "Start",
+    "deletedAllTasks": "All tasks deleted"
 }

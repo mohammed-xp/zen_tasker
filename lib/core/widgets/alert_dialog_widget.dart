@@ -15,7 +15,7 @@ class AlertDialogWidget extends StatelessWidget {
   final String title;
   final String message;
   final String confirmText;
-  final VoidCallback onConfirm;
+  final void Function() onConfirm;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class AlertDialogWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => onConfirm,
+          onPressed: onConfirm,
           child: Text(
             confirmText,
             style: isMobile(context)

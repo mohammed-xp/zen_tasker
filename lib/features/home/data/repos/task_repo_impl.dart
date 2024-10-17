@@ -52,7 +52,8 @@ class TaskRepoImpl implements TaskRepo {
   Future<Either<Failure, void>> deleteAllTasks(
       {required List<TaskModel> tasks}) async {
     try {
-      tasks.clear();
+      // tasks.clear();
+      await Hive.box<TaskModel>(kTasksBox).clear();
 
       return right(null);
     } catch (e) {

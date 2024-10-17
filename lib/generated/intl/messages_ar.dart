@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يجب تحديد التاريخ"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("حذف كل المهام"),
+        "deletedAllTasks":
+            MessageLookupByLibrary.simpleMessage("تم حذف جميع المهام"),
         "description": MessageLookupByLibrary.simpleMessage("وصف"),
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),

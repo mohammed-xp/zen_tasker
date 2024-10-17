@@ -10,6 +10,7 @@ import 'package:zen_tasker/core/services/get_it_service.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
+import 'package:zen_tasker/features/home/presentation/managers/delete_task_cubit/delete_task_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/tasks_cubit/tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/update_task_cubit/update_task_cubit.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UpdateTaskCubit(getIt.get<TaskRepo>()),
+        ),
+        BlocProvider(
+          create: (context) => DeleteTaskCubit(getIt.get<TaskRepo>()),
         ),
       ],
       child: BlocBuilder<TasksCubit, TasksState>(
