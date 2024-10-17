@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 
 class CustomLableAndText extends StatelessWidget {
@@ -17,15 +18,20 @@ class CustomLableAndText extends StatelessWidget {
       children: [
         Text(
           lable,
-          style: AppStyles.styleMedium16(context)
-              .copyWith(color: Colors.grey[600]),
+          style: isMobile(context)
+              ? AppStyles.styleMedium16(context)
+                  .copyWith(color: Colors.grey[600])
+              : AppStyles.styleMedium24(context)
+                  .copyWith(color: Colors.grey[600]),
         ),
         const SizedBox(
           height: 8,
         ),
         Text(
           text,
-          style: AppStyles.styleMedium20(context),
+          style: isMobile(context)
+              ? AppStyles.styleMedium20(context)
+              : AppStyles.styleMedium28(context),
         ),
       ],
     );

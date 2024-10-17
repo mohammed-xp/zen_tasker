@@ -4,6 +4,7 @@ import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/helper_function/convert_time_of_day_to_date_time.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/helper_function/open_date_picker.dart';
 import 'package:zen_tasker/core/helper_function/open_time_picker.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
@@ -52,7 +53,8 @@ class _EditViewBodyState extends State<EditViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      padding: const EdgeInsets.symmetric(
+          horizontal: kHorizontalPadding, vertical: 8),
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
@@ -63,6 +65,10 @@ class _EditViewBodyState extends State<EditViewBody> {
               autovalidateMode: autovalidateMode,
               child: Column(
                 children: [
+                  if (!isMobile(context))
+                    const SizedBox(
+                      height: 16,
+                    ),
                   LableTextFormField(
                     title: S.of(context).title,
                     controller: titleController,
@@ -170,6 +176,7 @@ class _EditViewBodyState extends State<EditViewBody> {
                     },
                     text: S.of(context).edit,
                   ),
+                  if (!isMobile(context)) const Spacer(),
                   const SizedBox(
                     height: 8,
                   ),

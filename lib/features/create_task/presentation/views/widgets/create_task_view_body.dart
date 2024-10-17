@@ -55,6 +55,10 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (!isMobile(context))
+                    const SizedBox(
+                      height: 16,
+                    ),
                   SizedBox(
                     width: isMobile(context)
                         ? null

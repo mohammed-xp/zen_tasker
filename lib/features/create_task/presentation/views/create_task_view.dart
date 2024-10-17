@@ -22,7 +22,7 @@ class CreateTaskView extends StatelessWidget {
         appBar: CustomAppBar(
           title: S.of(context).addTask,
         ),
-        body: const SafeArea(child: CreateTaskViewBodyBloc()),
+        body: const CreateTaskViewBodyBloc(),
       ),
     );
   }

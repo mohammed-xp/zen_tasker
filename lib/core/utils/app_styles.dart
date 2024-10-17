@@ -22,6 +22,12 @@ abstract class AppStyles {
         color: AppColors.primaryColor,
       );
 
+  static TextStyle styleBold40(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 35),
+        fontWeight: FontWeight.w700,
+        color: const Color(0xff363942),
+      );
+
   static TextStyle styleBold35(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 35),
         fontWeight: FontWeight.w700,
@@ -67,6 +73,18 @@ abstract class AppStyles {
   static TextStyle styleSemiBold13(context) => TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 13),
         fontWeight: FontWeight.w600,
+        color: Colors.black,
+      );
+
+  static TextStyle styleMedium28(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 28),
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
+      );
+
+  static TextStyle styleMedium24(context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 24),
+        fontWeight: FontWeight.w500,
         color: Colors.black,
       );
 
