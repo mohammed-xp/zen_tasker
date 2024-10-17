@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_images.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 
@@ -21,16 +22,25 @@ class CustomSearchTextField extends StatelessWidget {
       keyboardType: TextInputType.text,
       onChanged: onChanged,
       controller: controller,
+      style: isMobile(context)
+          ? AppStyles.styleMedium16(context)
+          : AppStyles.styleSemiBold20(context),
       decoration: InputDecoration(
         suffixIcon: IconButton(
           // icon: const Icon(Icons.search_rounded),
-          icon: SvgPicture.asset(AppImages.imagesSearchIcon),
+          icon: SvgPicture.asset(
+            AppImages.imagesSearchIcon,
+          ),
           onPressed: null,
         ),
         hintText: S.of(context).findYourTask,
-        hintStyle: AppStyles.styleMedium16(context).copyWith(
-          color: const Color(0xFFA8A8A8),
-        ),
+        hintStyle: isMobile(context)
+            ? AppStyles.styleMedium16(context).copyWith(
+                color: const Color(0xFFA8A8A8),
+              )
+            : AppStyles.styleSemiBold20(context).copyWith(
+                color: const Color(0xFFA8A8A8),
+              ),
         filled: true,
         fillColor: const Color(0xFFF5F5F5),
         border: buildBorder(),

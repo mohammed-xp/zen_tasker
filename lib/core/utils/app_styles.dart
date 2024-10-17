@@ -113,9 +113,16 @@ abstract class AppStyles {
       );
 }
 
-/// Calculates the responsive font size based on the provided [fontSize] and the scaling factor
-/// determined by the [BuildContext]. It ensures the font size stays within a range of 80% to 120%
-/// of the original size to maintain readability and consistency across different screen sizes.
+/// Returns a font size that is responsive to the device's screen size.
+///
+/// The font size is scaled based on the width of the device's screen. The
+/// scaling factor is determined by the [_getScaleFactor] function, which
+/// returns a value between 0 and 1. The font size is then multiplied by
+/// this scaling factor.
+///
+/// The resulting font size is clamped to a range of 80% to 120% of the
+/// original font size, to prevent the font from becoming too large or
+/// too small.
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   double scaleFactor = _getScaleFactor(context);
   double responsiveFontSize = fontSize * scaleFactor;
@@ -126,15 +133,21 @@ double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
 
-/// Determines the scaling factor based on the width of the device's screen.
+/// Calculates a scale factor based on the width of the device's screen.
 ///
-/// The scale factor is calculated by dividing the screen width by a fixed
-/// base value, which varies depending on the device type:
-/// - For devices smaller than a tablet, the base value is 400.
-/// - For devices smaller than a desktop, the base value is 800.
-/// - For desktop-sized devices, the base value is 1200.
+/// The scale factor is a value between 0 and 1 that is used to scale font
+/// sizes. The scale factor is determined by the width of the screen, such
+/// that the font size is larger on larger screens and smaller on smaller
+/// screens.
 ///
-/// This factor is used to adjust UI elements for different screen sizes.
+/// The scale factor is calculated as follows:
+///
+/// - If the width is less than [SizeConfig.tablet], the scale factor is
+///   the width divided by [SizeConfig.mobile].
+/// - If the width is less than [SizeConfig.desktop], the scale factor is
+///   the width divided by [SizeConfig.tablet].
+/// - Otherwise, the scale factor is the width divided by [SizeConfig.tablet].
+///
 double _getScaleFactor(BuildContext context) {
   double width = MediaQuery.sizeOf(context).width;
 

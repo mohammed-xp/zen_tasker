@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_images.dart';
 
@@ -21,8 +22,8 @@ class CustomCheckBox extends StatelessWidget {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
-        height: 24,
-        width: 24,
+        height: isMobile(context) ? 24 : 32,
+        width: isMobile(context) ? 24 : 32,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: isChecked ? AppColors.secendaryColor : Colors.white,

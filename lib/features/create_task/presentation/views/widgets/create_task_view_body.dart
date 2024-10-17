@@ -4,6 +4,7 @@ import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/helper_function/convert_time_of_day_to_date_time.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/helper_function/open_date_picker.dart';
 import 'package:zen_tasker/core/helper_function/open_time_picker.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
@@ -55,7 +56,9 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: MediaQuery.sizeOf(context).width * .6,
+                    width: isMobile(context)
+                        ? null
+                        : MediaQuery.sizeOf(context).width * .6,
                     child: LableTextFormField(
                       title: S.of(context).title,
                       hintText: S.of(context).hintTitle,
@@ -169,7 +172,7 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                       text: S.of(context).addTask,
                     ),
                   ),
-                  const Spacer(),
+                  if (!isMobile(context)) const Spacer(),
                   const SizedBox(
                     height: 8,
                   ),

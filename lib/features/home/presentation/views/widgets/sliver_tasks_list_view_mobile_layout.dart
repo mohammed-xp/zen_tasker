@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/features/home/presentation/managers/fetch_tasks_cubit/fetch_tasks_cubit.dart';
 import 'package:zen_tasker/features/home/presentation/managers/update_task_cubit/update_task_cubit.dart';
-import 'package:zen_tasker/features/home/presentation/views/widgets/task_done_item.dart';
+import 'package:zen_tasker/features/home/presentation/views/widgets/task_item.dart';
 
 class SliverTasksListViewMobileLayout extends StatelessWidget {
   const SliverTasksListViewMobileLayout({
@@ -21,7 +21,7 @@ class SliverTasksListViewMobileLayout extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 24),
         child: BlocBuilder<UpdateTaskCubit, UpdateTaskState>(
           builder: (context, state) {
-            return TaskDoneItem(
+            return TaskItem(
               taskModel: tasks[index],
               isTaskDone: tasks[index].isDone,
               onChecked: (value) {
