@@ -1,9 +1,10 @@
 // import 'dart:io';
 
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:universal_io/io.dart';
 import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 
