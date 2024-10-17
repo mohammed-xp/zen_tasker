@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -25,6 +26,9 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       onSaved: onSaved,
       controller: controller,
+      style: isMobile(context)
+          ? AppStyles.styleMedium16(context)
+          : AppStyles.styleSemiBold20(context),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return messageValidate;
@@ -32,15 +36,26 @@ class CustomTextFormField extends StatelessWidget {
         return null;
       },
       keyboardType: textInputType,
-      minLines: 1,
-      maxLines: maxLines,
+      minLines: isMobile(context) ? 1 : maxLines ?? 5,
+      maxLines: isMobile(context) ? maxLines : null,
+      // textInputAction: TextInputAction.,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppStyles.styleMedium16(context).copyWith(
-          color: const Color(0xFFA8A8A8),
-        ),
+        hintStyle: isMobile(context)
+            ? AppStyles.styleMedium16(context).copyWith(
+                color: const Color(0xFFA8A8A8),
+              )
+            : AppStyles.styleSemiBold20(context).copyWith(
+                color: const Color(0xFFA8A8A8),
+              ),
+        errorStyle: isMobile(context)
+            ? AppStyles.styleMedium12(context).copyWith(color: Colors.redAccent)
+            : AppStyles.styleMedium20(context)
+                .copyWith(color: Colors.redAccent),
         filled: true,
-        fillColor: backgroundColor ?? const Color(0xFFF5F5F5),
+        fillColor: isMobile(context)
+            ? backgroundColor ?? const Color(0xFFF5F5F5)
+            : const Color(0xFFF5F5F5),
         border: buildBorder(backgroundColor: backgroundColor),
         enabledBorder: buildBorder(backgroundColor: backgroundColor),
         focusedBorder: buildBorder(backgroundColor: backgroundColor),

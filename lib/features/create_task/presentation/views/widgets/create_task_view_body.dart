@@ -52,16 +52,20 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
               key: formKey,
               autovalidateMode: autovalidateMode,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  LableTextFormField(
-                    title: S.of(context).title,
-                    hintText: S.of(context).hintTitle,
-                    maxLines: 1,
-                    textInputType: TextInputType.text,
-                    messageValidate: S.of(context).titleIsRequired,
-                    onSaved: (value) {
-                      title = value!;
-                    },
+                  SizedBox(
+                    width: MediaQuery.sizeOf(context).width * .6,
+                    child: LableTextFormField(
+                      title: S.of(context).title,
+                      hintText: S.of(context).hintTitle,
+                      maxLines: 1,
+                      textInputType: TextInputType.text,
+                      messageValidate: S.of(context).titleIsRequired,
+                      onSaved: (value) {
+                        title = value!;
+                      },
+                    ),
                   ),
                   const SizedBox(
                     height: 32,
@@ -142,27 +146,30 @@ class _CreateTaskViewBodyState extends State<CreateTaskViewBody> {
                     },
                   ),
                   const Spacer(),
-                  CustomButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        TaskModel taskModel = TaskModel(
-                          title: title!,
-                          description: description!,
-                          date: date!,
-                          time: time!,
-                          isDone: false,
-                        );
-                        context
-                            .read<CreateTaskCubit>()
-                            .createTask(taskModel: taskModel);
-                      } else {
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {});
-                      }
-                    },
-                    text: S.of(context).addTask,
+                  Center(
+                    child: CustomButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          TaskModel taskModel = TaskModel(
+                            title: title!,
+                            description: description!,
+                            date: date!,
+                            time: time!,
+                            isDone: false,
+                          );
+                          context
+                              .read<CreateTaskCubit>()
+                              .createTask(taskModel: taskModel);
+                        } else {
+                          autovalidateMode = AutovalidateMode.always;
+                          setState(() {});
+                        }
+                      },
+                      text: S.of(context).addTask,
+                    ),
                   ),
+                  const Spacer(),
                   const SizedBox(
                     height: 8,
                   ),

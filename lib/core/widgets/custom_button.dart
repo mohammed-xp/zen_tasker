@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 
@@ -21,8 +22,10 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 54,
-      width: double.infinity,
+      height: isMobile(context) ? 54 : 70,
+      width: isMobile(context)
+          ? double.infinity
+          : MediaQuery.sizeOf(context).width * .4,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor ?? AppColors.primaryColor,
