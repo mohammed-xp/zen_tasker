@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zen_tasker/constants.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/models/onboarding_model.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
@@ -40,98 +41,149 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 24,
-        ),
-        Stack(
-          children: [
-            const Center(
-              child: CustomTitleText(fontSize: 34),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: isMobile(context) ? 0 : 16),
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 24,
+          ),
+          Stack(
+            children: [
+              Center(
+                child: CustomTitleText(fontSize: isMobile(context) ? 34 : 50),
+              ),
+              currentPage == OnboardingModel.onBoardingList(context).length - 1
+                  ? const SizedBox()
+                  : TextButton(
+                      onPressed: () {
+                        start();
+                      },
+                      child: Text(
+                        S.of(context).skip,
+                        style: isMobile(context)
+                            ? AppStyles.styleSemiBold13(context).copyWith(
+                                color: AppColors.primaryColor,
+                                decoration: TextDecoration.underline,
+                              )
+                            : AppStyles.styleSemiBold20(context).copyWith(
+                                color: AppColors.primaryColor,
+                                decoration: TextDecoration.underline,
+                              ),
+                      ),
+                    ),
+            ],
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          Expanded(
+            flex: 10,
+            child: OnboardingPageView(
+              pageViewController: pageController,
+              onboardingList: OnboardingModel.onBoardingList(context),
             ),
-            currentPage == OnboardingModel.onBoardingList(context).length - 1
-                ? const SizedBox()
-                : TextButton(
+          ),
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Visibility(
+                      visible: currentPage != 0,
+                      maintainSize: true,
+                      maintainState: true,
+                      maintainAnimation: true,
+                      child: isMobile(context)
+                          ? IconButton(
+                              onPressed: () {
+                                pageController.previousPage(
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.easeIn,
+                                );
+                              },
+                              icon:
+                                  const Icon(Icons.arrow_back_ios_new_rounded),
+                              color: AppColors.primaryColor,
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                pageController.previousPage(
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: Curves.easeIn,
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: const CircleBorder(),
+                                padding: EdgeInsets.all(20),
+                                backgroundColor:
+                                    AppColors.primaryColor, // <-- Button color
+                                foregroundColor: AppColors
+                                    .secendaryColor, // <-- Splash color
+                              ),
+                              child: const Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                                color: Colors.white,
+                              ),
+                            )),
+                  SmoothPageIndicator(
+                    controller: pageController,
+                    count: OnboardingModel.onBoardingList(context).length,
+                    effect: WormEffect(
+                      dotHeight: isMobile(context) ? 13 : 23,
+                      dotWidth: isMobile(context) ? 13 : 23,
+                      activeDotColor: AppColors.primaryColor,
+                      dotColor: Colors.grey,
+                    ),
+                  ),
+                  TextButton(
                     onPressed: () {
-                      start();
+                      if (pageController.page ==
+                          OnboardingModel.onBoardingList(context).length - 1) {
+                        start();
+                      } else {
+                        pageController.nextPage(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeIn,
+                        );
+                      }
                     },
-                    child: Text(
-                      S.of(context).skip,
-                      style: AppStyles.styleSemiBold13(context).copyWith(
-                        color: AppColors.primaryColor,
-                        decoration: TextDecoration.underline,
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                        isMobile(context)
+                            ? Colors.white
+                            : AppColors.primaryColor,
+                      ),
+                      foregroundColor: WidgetStateProperty.all<Color>(
+                        isMobile(context)
+                            ? Colors.white
+                            : AppColors.secendaryColor,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(isMobile(context) ? 0 : 10.0),
+                      child: Text(
+                        currentPage ==
+                                OnboardingModel.onBoardingList(context).length -
+                                    1
+                            ? S.of(context).start
+                            : S.of(context).next,
+                        style: AppStyles.styleBold16(context).copyWith(
+                          color: isMobile(context)
+                              ? AppColors.primaryColor
+                              : Colors.white,
+                        ),
                       ),
                     ),
                   ),
-          ],
-        ),
-        const SizedBox(
-          height: 56,
-        ),
-        Expanded(
-          flex: 2,
-          child: OnboardingPageView(
-            pageViewController: pageController,
-            onboardingList: OnboardingModel.onBoardingList(context),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Visibility(
-                  visible: currentPage != 0,
-                  maintainSize: true,
-                  maintainState: true,
-                  maintainAnimation: true,
-                  child: IconButton(
-                    onPressed: () {
-                      pageController.previousPage(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeIn,
-                      );
-                    },
-                    icon: const Icon(Icons.arrow_back_ios_new_rounded),
-                    color: AppColors.primaryColor,
-                  ),
-                ),
-                SmoothPageIndicator(
-                  controller: pageController,
-                  count: OnboardingModel.onBoardingList(context).length,
-                  effect: const WormEffect(
-                    dotHeight: 13,
-                    dotWidth: 13,
-                    activeDotColor: AppColors.primaryColor,
-                    dotColor: Colors.grey,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (pageController.page ==
-                        OnboardingModel.onBoardingList(context).length - 1) {
-                      start();
-                    } else {
-                      pageController.nextPage(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeIn,
-                      );
-                    }
-                  },
-                  icon: Text(
-                    S.of(context).next,
-                    style: AppStyles.styleBold16(context)
-                        .copyWith(color: AppColors.primaryColor),
-                  ),
-                  color: AppColors.primaryColor,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

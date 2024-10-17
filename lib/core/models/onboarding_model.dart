@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_images.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
@@ -23,19 +24,29 @@ class OnboardingModel {
               children: [
                 TextSpan(
                   text: '${S.of(context).welcomeTo} ',
-                  style: AppStyles.styleThick24(context),
+                  style: isMobile(context)
+                      ? AppStyles.styleThick24(context)
+                      : AppStyles.styleThick34(context),
                 ),
                 TextSpan(
                   text: S.of(context).zen,
-                  style: AppStyles.styleThick24(context).copyWith(
-                    color: AppColors.secendaryColor,
-                  ),
+                  style: isMobile(context)
+                      ? AppStyles.styleThick24(context).copyWith(
+                          color: AppColors.secendaryColor,
+                        )
+                      : AppStyles.styleThick34(context).copyWith(
+                          color: AppColors.secendaryColor,
+                        ),
                 ),
                 TextSpan(
                   text: S.of(context).tasker,
-                  style: AppStyles.styleThick24(context).copyWith(
-                    color: AppColors.primaryColor,
-                  ),
+                  style: isMobile(context)
+                      ? AppStyles.styleThick24(context).copyWith(
+                          color: AppColors.primaryColor,
+                        )
+                      : AppStyles.styleThick34(context).copyWith(
+                          color: AppColors.primaryColor,
+                        ),
                 ),
               ],
             ),

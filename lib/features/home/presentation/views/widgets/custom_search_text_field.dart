@@ -25,7 +25,7 @@ class CustomSearchTextField extends StatelessWidget {
         suffixIcon: IconButton(
           // icon: const Icon(Icons.search_rounded),
           icon: SvgPicture.asset(AppImages.imagesSearchIcon),
-          onPressed: () {},
+          onPressed: null,
         ),
         hintText: S.of(context).findYourTask,
         hintStyle: AppStyles.styleMedium16(context).copyWith(

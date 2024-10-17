@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("تخط"),
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
             "حدث خطأ ، يرجى المحاولة مرة أخرى"),
+        "start": MessageLookupByLibrary.simpleMessage("ابدأ"),
         "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "state": MessageLookupByLibrary.simpleMessage("الحالة"),
         "tasker": MessageLookupByLibrary.simpleMessage("تاسكر"),

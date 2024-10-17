@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
             "Something went wrong, please try again"),
+        "start": MessageLookupByLibrary.simpleMessage("Start"),
         "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "tasker": MessageLookupByLibrary.simpleMessage("Tasker"),

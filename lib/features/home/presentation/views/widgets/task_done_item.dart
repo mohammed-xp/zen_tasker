@@ -4,6 +4,7 @@ import 'package:zen_tasker/core/helper_function/format_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
+import 'package:zen_tasker/core/utils/size_config.dart';
 import 'package:zen_tasker/features/home/presentation/views/details_view.dart';
 import 'package:zen_tasker/features/home/presentation/views/widgets/custom_check_box.dart';
 
@@ -56,6 +57,7 @@ class TaskDoneItem extends StatelessWidget {
             children: [
               Expanded(
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomCheckBox(
                       isChecked: isTaskDone,
@@ -75,11 +77,18 @@ class TaskDoneItem extends StatelessWidget {
                         children: [
                           Text(
                             taskModel.title,
-                            style: AppStyles.styleSemiBold20(context).copyWith(
-                              decoration: isTaskDone
-                                  ? TextDecoration.lineThrough
-                                  : TextDecoration.none,
-                            ),
+                            style: MediaQuery.sizeOf(context).width <
+                                    SizeConfig.tablet
+                                ? AppStyles.styleSemiBold20(context).copyWith(
+                                    decoration: isTaskDone
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none,
+                                  )
+                                : AppStyles.styleSemiBold24(context).copyWith(
+                                    decoration: isTaskDone
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none,
+                                  ),
                             overflow: TextOverflow.ellipsis,
                           ),
                           Expanded(

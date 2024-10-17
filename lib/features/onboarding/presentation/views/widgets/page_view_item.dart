@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/models/onboarding_model.dart';
 import 'package:zen_tasker/core/utils/app_styles.dart';
 
@@ -12,28 +13,32 @@ class PageViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 200,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: SvgPicture.asset(
-              onboardingModel.image,
-              fit: BoxFit.fill,
+        Flexible(
+          child: SizedBox(
+            height: MediaQuery.sizeOf(context).height * .4,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: SvgPicture.asset(
+                onboardingModel.image,
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
         const SizedBox(
-          height: 40,
+          height: 20,
         ),
         onboardingModel.title,
         const SizedBox(
           height: 24,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: EdgeInsets.symmetric(horizontal: isMobile(context) ? 8 : 40),
           child: Text(
             onboardingModel.subtitle,
-            style: AppStyles.styleRegular18(context),
+            style: isMobile(context)
+                ? AppStyles.styleRegular18(context)
+                : AppStyles.styleRegular28(context),
             textAlign: TextAlign.center,
           ),
         ),
