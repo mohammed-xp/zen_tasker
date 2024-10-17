@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/core/widgets/alert_dialog_widget.dart';
 import 'package:zen_tasker/core/widgets/custom_title_text.dart';
 import 'package:zen_tasker/features/home/presentation/managers/delete_task_cubit/delete_task_cubit.dart';
@@ -19,6 +20,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: isMobile(context) ? null : 80,
         backgroundColor: Colors.white,
         title: const CustomTitleText(
           fontSize: 24,
