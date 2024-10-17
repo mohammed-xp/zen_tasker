@@ -15,6 +15,7 @@ class OnboardingPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      itemCount: onboardingList.length,
       controller: pageViewController,
       itemBuilder: (context, index) {
         return PageViewItem(
