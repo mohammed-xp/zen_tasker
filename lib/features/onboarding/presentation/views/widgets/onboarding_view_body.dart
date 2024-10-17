@@ -51,7 +51,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           Stack(
             children: [
               Center(
-                child: CustomTitleText(fontSize: isMobile(context) ? 34 : 50),
+                child: CustomTitleText(fontSize: isMobile(context) ? 34 : 43),
               ),
               currentPage == OnboardingModel.onBoardingList(context).length - 1
                   ? const SizedBox()
@@ -117,11 +117,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                               },
                               style: ElevatedButton.styleFrom(
                                 shape: const CircleBorder(),
-                                padding: EdgeInsets.all(20),
-                                backgroundColor:
-                                    AppColors.primaryColor, // <-- Button color
-                                foregroundColor: AppColors
-                                    .secendaryColor, // <-- Splash color
+                                padding: const EdgeInsets.all(20),
+                                backgroundColor: AppColors.primaryColor,
+                                foregroundColor: AppColors.secendaryColor,
                               ),
                               child: const Icon(
                                 Icons.arrow_back_ios_new_rounded,

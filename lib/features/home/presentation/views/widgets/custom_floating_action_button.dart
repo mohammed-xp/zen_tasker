@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zen_tasker/core/helper_function/is_tablet.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/create_task_view.dart';
 
 import '../../../../../core/utils/app_colors.dart';
@@ -27,10 +28,10 @@ class CustomFloatingActionButton extends StatelessWidget {
             colors: [AppColors.primaryColor, AppColors.lightPrimaryColor],
           ),
         ),
-        child: const Icon(
+        child: Icon(
           Icons.add,
           color: Colors.white,
-          size: 25,
+          size: isMobile(context) ? 25 : 50,
         ),
       ),
     );

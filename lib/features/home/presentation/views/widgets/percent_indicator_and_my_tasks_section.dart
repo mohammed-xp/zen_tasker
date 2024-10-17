@@ -18,7 +18,7 @@ class PercentIndicatorAndMyTasksSection extends StatelessWidget {
     return Row(
       children: [
         PercentIndicatorWidget(
-          percent: isDoneLength / tasksLength,
+          percent: isDoneLength == 0 ? 0 : isDoneLength / tasksLength,
         ),
         const SizedBox(
           width: 16,

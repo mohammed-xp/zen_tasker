@@ -22,8 +22,8 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: isMobile(context) ? null : 80,
         backgroundColor: Colors.white,
-        title: const CustomTitleText(
-          fontSize: 24,
+        title: CustomTitleText(
+          fontSize: isMobile(context) ? 24 : 34,
         ),
         elevation: 0,
         actions: [

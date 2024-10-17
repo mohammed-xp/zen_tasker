@@ -23,9 +23,9 @@ class _PercentIndicatorWidgetState extends State<PercentIndicatorWidget> {
       animationDuration: 1200,
       lineWidth: 5.0,
       percent: widget.percent,
-      circularStrokeCap: CircularStrokeCap.round,
-      restartAnimation: true,
-      progressColor: AppColors.secendaryColor,
+      // circularStrokeCap: CircularStrokeCap.round,
+      progressColor:
+          widget.percent == 1.0 ? Colors.green : AppColors.secendaryColor,
     );
   }
 }

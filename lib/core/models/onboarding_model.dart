@@ -57,7 +57,9 @@ class OnboardingModel {
           image: AppImages.imagesOnboardingImage2,
           title: Text(
             S.of(context).onBoardingTitle2,
-            style: AppStyles.styleBold23(context),
+            style: isMobile(context)
+                ? AppStyles.styleBold23(context)
+                : AppStyles.styleBold35(context),
           ),
           subtitle: S.of(context).onBoardingSubTitle2,
         ),
@@ -65,7 +67,9 @@ class OnboardingModel {
           image: AppImages.imagesOnboardingImage3,
           title: Text(
             S.of(context).onBoardingTitle3,
-            style: AppStyles.styleBold23(context),
+            style: isMobile(context)
+                ? AppStyles.styleBold23(context)
+                : AppStyles.styleBold35(context),
           ),
           subtitle: S.of(context).onBoardingSubTitle3,
         ),
@@ -73,7 +77,9 @@ class OnboardingModel {
           image: AppImages.imagesOnboardingImage4,
           title: Text(
             S.of(context).onBoardingTitle4,
-            style: AppStyles.styleBold23(context),
+            style: isMobile(context)
+                ? AppStyles.styleBold23(context)
+                : AppStyles.styleBold35(context),
             textAlign: TextAlign.center,
           ),
           subtitle: S.of(context).onBoardingSubTitle4,
@@ -82,7 +88,9 @@ class OnboardingModel {
           image: AppImages.imagesOnboardingImage5,
           title: Text(
             S.of(context).onBoardingTitle5,
-            style: AppStyles.styleBold23(context),
+            style: isMobile(context)
+                ? AppStyles.styleBold23(context)
+                : AppStyles.styleBold35(context),
           ),
           subtitle: S.of(context).onBoardingSubTitle5,
         ),
