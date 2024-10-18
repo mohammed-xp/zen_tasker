@@ -9,7 +9,7 @@ import 'package:zen_tasker/features/create_task/data/repos/create_task_repo.dart
 
 class CreateTaskRepoImpl implements CreateTaskRepo {
   @override
-  Future<Either<Failure, void>> createTask({
+  Future<Either<Failure, TaskModel>> createTask({
     required TaskModel taskModel,
   }) async {
     try {
@@ -17,7 +17,7 @@ class CreateTaskRepoImpl implements CreateTaskRepo {
 
       await taskBox.add(taskModel);
 
-      return right(null);
+      return right(taskModel);
     } catch (e) {
       log('Exception in CreateTaskRepoImpl.createTask: ${e.toString()}');
       return left(LocalFailure(e.toString()));

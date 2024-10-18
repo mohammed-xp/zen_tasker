@@ -7,6 +7,7 @@ import 'package:zen_tasker/constants.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/core/services/custom_bloc_observer.dart';
 import 'package:zen_tasker/core/services/get_it_service.dart';
+import 'package:zen_tasker/core/services/local_notification_service.dart';
 import 'package:zen_tasker/core/services/prefs.dart';
 import 'package:zen_tasker/core/utils/app_colors.dart';
 import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
@@ -17,6 +18,7 @@ import 'package:zen_tasker/features/home/presentation/managers/update_task_cubit
 import 'package:zen_tasker/features/splash/presentation/views/splash_view.dart';
 import 'core/helper_function/on_generate_routes.dart';
 import 'generated/l10n.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +33,10 @@ void main() async {
   Bloc.observer = CustomBlocObserver();
 
   setupGetIt();
+
+  await LocalNotificationService.init();
+
+  tz.initializeTimeZones();
 
   runApp(
     DevicePreview(

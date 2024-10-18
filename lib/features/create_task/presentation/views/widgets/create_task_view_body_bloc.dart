@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zen_tasker/core/helper_function/build_toast.dart';
 import 'package:zen_tasker/core/widgets/custom_progress.dart';
 import 'package:zen_tasker/features/create_task/presentation/managers/create_task_cubit/create_task_cubit.dart';
 import 'package:zen_tasker/features/create_task/presentation/views/widgets/create_task_view_body.dart';
@@ -17,7 +18,13 @@ class CreateTaskViewBodyBloc extends StatelessWidget {
           Navigator.pop(context);
         }
 
-        if (state is CreateTaskError) {}
+        if (state is CreateTaskError) {
+          buildToast(
+            context,
+            message: state.error,
+            state: ToastStates.ERROR,
+          );
+        }
       },
       builder: (context, state) {
         return CustomProgress(
