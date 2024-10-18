@@ -23,9 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addTask": MessageLookupByLibrary.simpleMessage("Add Task"),
+        "atZenTasker": MessageLookupByLibrary.simpleMessage("at ZenTasker."),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change Language"),
+        "checkOutMyTask":
+            MessageLookupByLibrary.simpleMessage("Check out my task"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateIsRequired":
             MessageLookupByLibrary.simpleMessage("Date is required"),

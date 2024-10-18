@@ -539,6 +539,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Check out my task`
+  String get checkOutMyTask {
+    return Intl.message(
+      'Check out my task',
+      name: 'checkOutMyTask',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at ZenTasker.`
+  String get atZenTasker {
+    return Intl.message(
+      'at ZenTasker.',
+      name: 'atZenTasker',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -47,5 +47,7 @@
     "messageAlertToDeleteAllTasks": "Are you sure you want to delete all tasks?",
     "start": "Start",
     "deletedAllTasks": "All tasks deleted",
-    "deletedTask": "Task deleted"
+    "deletedTask": "Task deleted",
+    "checkOutMyTask": "Check out my task",
+    "atZenTasker":"at ZenTasker."
 }

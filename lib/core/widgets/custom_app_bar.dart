@@ -6,9 +6,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
+    this.onPressed,
+    this.icon,
   });
 
   final String title;
+  final Function()? onPressed;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           size: isMobile(context) ? null : 40,
         ),
       ),
+      actions: [
+        if (icon != null)
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              icon,
+              color: Colors.black,
+              size: isMobile(context) ? null : 40,
+            ),
+          )
+      ],
     );
   }
 
