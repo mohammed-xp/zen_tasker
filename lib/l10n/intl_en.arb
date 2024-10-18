@@ -46,5 +46,6 @@
     "deleteAll": "Delete all tasks",
     "messageAlertToDeleteAllTasks": "Are you sure you want to delete all tasks?",
     "start": "Start",
-    "deletedAllTasks": "All tasks deleted"
+    "deletedAllTasks": "All tasks deleted",
+    "deletedTask": "Task deleted"
 }

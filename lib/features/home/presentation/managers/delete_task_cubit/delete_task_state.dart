@@ -9,6 +9,8 @@ final class DeleteTaskLoading extends DeleteTaskState {}
 
 final class DeleteTaskSuccess extends DeleteTaskState {}
 
+final class DeleteAllTasksSuccess extends DeleteTaskState {}
+
 final class DeleteTaskFailure extends DeleteTaskState {
   final String message;
   DeleteTaskFailure({required this.message});

@@ -46,6 +46,7 @@
     "deleteAll": "حذف كل المهام",
     "messageAlertToDeleteAllTasks": "هل انت متأكد من أنك تريد حذف جميع المهام؟",
     "start": "ابدأ",
-    "deletedAllTasks": "تم حذف جميع المهام"
+    "deletedAllTasks": "تم حذف جميع المهام",
+    "deletedTask": "تم حذف المهمة"
 
 }

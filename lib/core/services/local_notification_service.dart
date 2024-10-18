@@ -3,8 +3,8 @@ import 'package:timezone/timezone.dart' as tz;
 
 class LocalNotificationService {
   // Initialze the FlutterLocalNotificationPlugin instant
-  static final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  static final FlutterLocalNotificationsPlugin
+      _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   static Future<void> onDidReceiveNotificationResponse(
       NotificationResponse response) async {}
@@ -29,7 +29,7 @@ class LocalNotificationService {
     );
 
     // Initialize the plugin with the specified settings
-    await flutterLocalNotificationsPlugin.initialize(
+    await _flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
       onDidReceiveNotificationResponse: onDidReceiveNotificationResponse,
       onDidReceiveBackgroundNotificationResponse:
@@ -37,7 +37,7 @@ class LocalNotificationService {
     );
 
     // Request notification permissions for android
-    await flutterLocalNotificationsPlugin
+    await _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
         ?.requestNotificationsPermission();
@@ -57,8 +57,8 @@ class LocalNotificationService {
       iOS: DarwinNotificationDetails(),
     );
 
-    await flutterLocalNotificationsPlugin.show(
-      0,
+    await _flutterLocalNotificationsPlugin.show(
+      id,
       title,
       body,
       platformChannelSpecifics,
@@ -83,7 +83,7 @@ class LocalNotificationService {
       iOS: DarwinNotificationDetails(),
     );
 
-    await flutterLocalNotificationsPlugin.zonedSchedule(
+    await _flutterLocalNotificationsPlugin.zonedSchedule(
       id,
       title,
       body,
@@ -95,6 +95,28 @@ class LocalNotificationService {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.dateAndTime,
+    );
+  }
+
+  // Cancel all scheduled notifications
+  static Future<void> cancelAllScheduledNotifications() async {
+    await _flutterLocalNotificationsPlugin.cancelAll();
+  }
+
+  // Cancel a specific scheduled notification
+  static Future<void> cancelScheduledNotification(int id) async {
+    await _flutterLocalNotificationsPlugin.cancel(id);
+  }
+
+  // Edit a specific scheduled notification
+  static Future<void> editScheduledNotification(
+      int id, String title, String body, DateTime scheduledDate) async {
+    await _flutterLocalNotificationsPlugin.cancel(id);
+    await scheduleNotification(
+      id,
+      title,
+      body,
+      scheduledDate,
     );
   }
 }

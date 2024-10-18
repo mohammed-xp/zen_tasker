@@ -20,12 +20,12 @@ class CreateTaskCubit extends Cubit<CreateTaskState> {
       (failure) {
         emit(CreateTaskError(error: failure.toString()));
       },
-      (task) {
+      (task) async {
         DateTime combinedDateTime = _combinedDateAndTime(
           date: taskModel.date,
           time: taskModel.time,
         );
-        LocalNotificationService.scheduleNotification(
+        await LocalNotificationService.scheduleNotification(
           task.key,
           taskModel.title,
           taskModel.description,

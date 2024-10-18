@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAll": MessageLookupByLibrary.simpleMessage("حذف كل المهام"),
         "deletedAllTasks":
             MessageLookupByLibrary.simpleMessage("تم حذف جميع المهام"),
+        "deletedTask": MessageLookupByLibrary.simpleMessage("تم حذف المهمة"),
         "description": MessageLookupByLibrary.simpleMessage("وصف"),
         "descriptionIsRequired":
             MessageLookupByLibrary.simpleMessage("يجب كتابة الوصف"),

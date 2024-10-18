@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
       ),
       body: BlocConsumer<DeleteTaskCubit, DeleteTaskState>(
         listener: (context, state) {
-          if (state is DeleteTaskSuccess) {
+          if (state is DeleteAllTasksSuccess) {
             buildToast(
               context,
               message: S.of(context).deletedAllTasks,
@@ -84,6 +84,27 @@ class HomeView extends StatelessWidget {
             );
             context.read<FetchTasksCubit>().fetchAllTasks();
             Navigator.pop(context);
+          } else if (state is DeleteTaskSuccess) {
+            buildToast(
+              context,
+              message: S.of(context).deletedTask,
+              state: ToastStates.SUCCESS,
+            );
+            context.read<FetchTasksCubit>().fetchAllTasks();
+            Navigator.pop(context);
+            Navigator.pop(context);
+          } else if (state is DeleteTaskFailure) {
+            buildToast(
+              context,
+              message: state.message,
+              state: ToastStates.ERROR,
+            );
+          } else if (state is DeleteTaskFailure) {
+            buildToast(
+              context,
+              message: state.message,
+              state: ToastStates.ERROR,
+            );
           }
         },
         builder: (context, state) {

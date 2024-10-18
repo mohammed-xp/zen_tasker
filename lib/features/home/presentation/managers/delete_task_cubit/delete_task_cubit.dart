@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
+import 'package:zen_tasker/core/services/local_notification_service.dart';
 import 'package:zen_tasker/features/home/data/repos/task_repo.dart';
 
 part 'delete_task_state.dart';
@@ -13,12 +14,15 @@ class DeleteTaskCubit extends Cubit<DeleteTaskState> {
   void deleteTask({required TaskModel taskModel}) async {
     emit(DeleteTaskLoading());
 
+    // int idTask = taskModel.key;
+
     final result = await taskRepo.deleteTask(taskModel: taskModel);
     result.fold(
       (failure) {
         emit(DeleteTaskFailure(message: failure.message));
       },
-      (success) {
+      (taskId) async {
+        await LocalNotificationService.cancelScheduledNotification(taskId);
         emit(DeleteTaskSuccess());
       },
     );
@@ -32,8 +36,9 @@ class DeleteTaskCubit extends Cubit<DeleteTaskState> {
       (failure) {
         emit(DeleteTaskFailure(message: failure.message));
       },
-      (success) {
-        emit(DeleteTaskSuccess());
+      (success) async {
+        await LocalNotificationService.cancelAllScheduledNotifications();
+        emit(DeleteAllTasksSuccess());
       },
     );
   }

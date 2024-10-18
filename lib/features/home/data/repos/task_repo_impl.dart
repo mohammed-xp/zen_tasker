@@ -36,12 +36,13 @@ class TaskRepoImpl implements TaskRepo {
   }
 
   @override
-  Future<Either<Failure, void>> deleteTask(
+  Future<Either<Failure, int>> deleteTask(
       {required TaskModel taskModel}) async {
     try {
+      int taskId = taskModel.key;
       await taskModel.delete();
 
-      return right(null);
+      return right(taskId);
     } catch (e) {
       log('Exception in TaskRepoImpl.deleteTask: ${e.toString()}');
       return left(LocalFailure(e.toString()));
