@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:zen_tasker/core/helper_function/combined_date_and_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
+import 'package:zen_tasker/core/services/device_calendar_service.dart';
 import 'package:zen_tasker/core/services/local_notification_service.dart';
 import 'package:zen_tasker/features/create_task/data/repos/create_task_repo.dart';
 
@@ -31,6 +32,12 @@ class CreateTaskCubit extends Cubit<CreateTaskState> {
           taskModel.title,
           taskModel.description,
           combinedDateTime,
+        );
+
+        await DeviceCalendarService.createEvent(
+          title: task.title,
+          description: task.description,
+          endDate: combinedDateTime,
         );
         emit(CreateTaskSuccess());
       },
