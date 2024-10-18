@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:zen_tasker/core/helper_function/combined_date_and_time.dart';
 import 'package:zen_tasker/core/models/task_model.dart';
 import 'package:zen_tasker/core/services/local_notification_service.dart';
 import 'package:zen_tasker/features/create_task/data/repos/create_task_repo.dart';
@@ -21,7 +22,7 @@ class CreateTaskCubit extends Cubit<CreateTaskState> {
         emit(CreateTaskError(error: failure.toString()));
       },
       (task) async {
-        DateTime combinedDateTime = _combinedDateAndTime(
+        DateTime combinedDateTime = combinedDateAndTime(
           date: taskModel.date,
           time: taskModel.time,
         );
@@ -34,33 +35,5 @@ class CreateTaskCubit extends Cubit<CreateTaskState> {
         emit(CreateTaskSuccess());
       },
     );
-  }
-
-  /// Combine a date string and a time string into a single DateTime object.
-  ///
-  /// The date string is expected to be in the format "yyyy-MM-dd".
-  /// The time string is expected to be in the format "HH:mm:ss".
-  ///
-  /// Returns a DateTime object that represents the combined date and time.
-  DateTime _combinedDateAndTime({required String date, required String time}) {
-    DateTime parsedDate = DateTime.parse(date);
-
-    // تحليل الوقت من String (والذي تم تحويله من DateTime سابقاً)
-    List<String> timeComponents = time.split(' ')[1].split(':');
-    int hour = int.parse(timeComponents[0]);
-    int minute = int.parse(timeComponents[1]);
-    int second = int.parse(timeComponents[2].split('.')[0]);
-
-    // دمج التاريخ والوقت في كائن DateTime واحد
-    DateTime combinedDateTime = DateTime(
-      parsedDate.year,
-      parsedDate.month,
-      parsedDate.day,
-      hour,
-      minute,
-      second,
-    );
-
-    return combinedDateTime;
   }
 }

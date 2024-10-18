@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zen_tasker/constants.dart';
-import 'package:zen_tasker/core/helper_function/build_toast.dart';
 import 'package:zen_tasker/core/helper_function/custom_show_dialog.dart';
 import 'package:zen_tasker/core/helper_function/format_date.dart';
 import 'package:zen_tasker/core/helper_function/format_time.dart';
@@ -144,8 +143,6 @@ class DetailsViewBody extends StatelessWidget {
                             context
                                 .read<DeleteTaskCubit>()
                                 .deleteTask(taskModel: taskModel);
-                            context.read<FetchTasksCubit>().fetchAllTasks();
-                            Navigator.pop(context);
                           } else {
                             customShowDialog(
                               context,
@@ -156,9 +153,6 @@ class DetailsViewBody extends StatelessWidget {
                                 context
                                     .read<DeleteTaskCubit>()
                                     .deleteTask(taskModel: taskModel);
-                                Navigator.pop(context);
-                                context.read<FetchTasksCubit>().fetchAllTasks();
-
                                 Navigator.pop(context);
                               },
                             );

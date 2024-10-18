@@ -90,9 +90,8 @@ class HomeView extends StatelessWidget {
               message: S.of(context).deletedTask,
               state: ToastStates.SUCCESS,
             );
-            context.read<FetchTasksCubit>().fetchAllTasks();
-            Navigator.pop(context);
-            Navigator.pop(context);
+            // context.read<FetchTasksCubit>().fetchAllTasks();
+            Navigator.pushReplacementNamed(context, HomeView.routeName);
           } else if (state is DeleteTaskFailure) {
             buildToast(
               context,
